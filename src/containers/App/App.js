@@ -1,5 +1,5 @@
 import React from 'react';
-import './App.css';
+import './App.scss';
 import ControlBar from '../../components/ControlBar/ControlBar';
 import Canvas from '../../components/Canvas/Canvas';
 

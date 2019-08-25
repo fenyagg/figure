@@ -1,0 +1,36 @@
+.control-bar {
+	height: 100px;
+	border: 1px solid;
+	margin-bottom: 10px;
+	display: flex;
+	background-color: #fff;
+
+	&__figures-list {
+		display: flex;
+		align-items: center;
+		border-right: 1px solid;
+		padding: 0 10px;
+	}
+
+	&__figure {
+		font-size: 50px;
+		width: 1em;
+		height: 1em;
+		fill: #98caf1;
+		margin: 0 10px;
+		cursor: pointer;
+	}
+
+	&__nav {
+		display: flex;
+		align-items: center;
+		padding: 0 10px;
+	}
+
+	&__nav-link {
+		font-size: 20px;
+		line-height: 1;
+		margin: 0 10px;
+		cursor: pointer;
+	}
+}
