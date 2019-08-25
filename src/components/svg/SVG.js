@@ -1,17 +1,16 @@
 import React from 'react';
-import PropTypes from "prop-types";
+import PropTypes from 'prop-types';
 
-const SVG = (props) => {
+const SVG = ({left, top, children, ...props}) => {
   return (
     <svg
-      viewBox={props.viewBox}
-      className={props.class}
       style={{
         left: props.left,
         top: props.top,
       }}
+      {...props}
     >
-      {props.children}
+      {children}
     </svg>
   );
 };
@@ -22,6 +21,7 @@ SVG.propTypes = {
   class: PropTypes.string,
   left: PropTypes.number,
   top: PropTypes.number,
+  onClick: PropTypes.func,
 };
 
 export default SVG;
