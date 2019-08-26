@@ -16,7 +16,7 @@ export const CanvasStore = types
     activeFigureId: types.maybe(types.string),
   })
   .actions(self => ({
-    addFigure(figureType) {
+    addFigure(figureType: string) {
       self.figures.push({
         id: shortid(),
         type: figureType,

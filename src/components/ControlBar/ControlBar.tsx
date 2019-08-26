@@ -1,25 +1,16 @@
+import { figuresList } from 'components/figures';
 import { observer } from 'mobx-react-lite';
-import React, { ReactChild, ReactElement, ReactNode, useContext } from 'react';
+import React, { useContext } from 'react';
+import { StoreContext } from 'stores';
 import './ControlBar.scss';
-import Square from '../svg/Square';
-import Triangle from '../svg/Triangle';
-import Circle from '../svg/Circle';
-import { StoreContext } from '../../stores';
 
 const ControlBar = () => {
   const context = useContext(StoreContext);
-  const figures: {
-    [key: string]: React.FC,
-  } = {
-    square: Square,
-    triangle: Triangle,
-    circle: Circle,
-  };
   return (
-    <div className='control-bar'>
+    <div className="control-bar">
       <div className="control-bar__figures-list">
-        {Object.keys(figures).map(figureName => {
-          const Figure = figures[figureName];
+        {Object.keys(figuresList).map(figureName => {
+          const Figure = figuresList[figureName];
           return (
             <Figure
               key={figureName}

@@ -1,7 +1,7 @@
 import React from 'react';
-import './App.scss';
-import ControlBar from '../../components/ControlBar/ControlBar';
 import Canvas from '../../components/Canvas/Canvas';
+import ControlBar from '../../components/ControlBar/ControlBar';
+import './App.scss';
 
 const App = () => {
   return (
