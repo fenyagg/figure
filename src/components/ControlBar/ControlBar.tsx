@@ -1,5 +1,5 @@
 import { observer } from 'mobx-react-lite';
-import React, {useContext} from 'react';
+import React, { ReactChild, ReactElement, ReactNode, useContext } from 'react';
 import './ControlBar.scss';
 import Square from '../svg/Square';
 import Triangle from '../svg/Triangle';
@@ -8,7 +8,9 @@ import { StoreContext } from '../../stores';
 
 const ControlBar = () => {
   const context = useContext(StoreContext);
-  const figures = {
+  const figures: {
+    [key: string]: React.FC,
+  } = {
     square: Square,
     triangle: Triangle,
     circle: Circle,

@@ -11,15 +11,16 @@
     "react": "^16.9.0",
     "react-dom": "^16.9.0",
     "react-scripts": "3.1.1",
-    "shortid": "^2.2.14"
+    "shortid": "^2.2.14",
+    "typescript": "3.5.2"
   },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "lint": "eslint src/**/*.js",
-    "lint-fix": "eslint --fix src/**/*.js"
+    "lint": "tslint src/**/*.ts src/**/*.tsx",
+    "lint-fix": "tslint --fix src/**/*.ts src/**/*.tsx"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -37,7 +38,16 @@
     ]
   },
   "devDependencies": {
+    "@types/jest": "24.0.15",
+    "@types/node": "^12.7.2",
+    "@types/react": "16.8.23",
+    "@types/react-dom": "16.8.4",
+    "@types/react-router-dom": "^4.3.4",
     "prettier": "^1.18.2",
-    "remotedev": "^0.2.9"
+    "remotedev": "^0.2.9",
+    "tslint": "^5.18.0",
+    "tslint-config-prettier": "^1.18.0",
+    "tslint-plugin-prettier": "^2.0.1",
+    "tslint-react": "^4.0.0"
   }
 }
