@@ -1,6 +1,28 @@
 .canvas {
 	background-color: #fff;
-	width: 800px;
-	height: 600px;
 	border: 1px solid;
+	position: relative;
+
+	&__figure-container {
+		position: absolute;
+
+        &._active {
+          outline: 1px solid red;
+          z-index: 1;
+          cursor: grab;
+
+          &._dragging {
+            cursor: grabbing;
+          }
+        }
+	}
+
+	&__figure {
+		position: relative;
+		fill: #FF9800;
+		stroke: black;
+		stroke-linejoin: round;
+		width: 100%;
+		height: 100%;
+	}
 }

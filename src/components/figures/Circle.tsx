@@ -1,11 +1,10 @@
 import React from 'react';
-import SVG, { ISVGProps } from './SVG';
 
-const Circle: React.FC<ISVGProps> = props => {
+const Circle: React.FC<React.SVGProps<SVGSVGElement>> = props => {
   return (
-    <SVG viewBox="0 0 30 30" {...props}>
+    <svg viewBox="-1 -1 32 32" {...props}>
       <ellipse cx="15" cy="15" rx="15" ry="15" />
-    </SVG>
+    </svg>
   );
 };
 

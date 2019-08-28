@@ -1,11 +1,10 @@
 import React from 'react';
-import SVG, { ISVGProps } from './SVG';
 
-const Square: React.FC<ISVGProps> = props => {
+const Square: React.FC<React.SVGProps<SVGSVGElement>> = props => {
   return (
-    <SVG viewBox="0 0 30 30" {...props}>
+    <svg viewBox="-1 -1 32 32" {...props}>
       <rect width="30" height="30" />
-    </SVG>
+    </svg>
   );
 };
 export default Square;

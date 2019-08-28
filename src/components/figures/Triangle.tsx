@@ -1,11 +1,10 @@
 import React from 'react';
-import SVG, { ISVGProps } from './SVG';
 
-const Triangle: React.FC<ISVGProps> = props => {
+const Triangle: React.FC<React.SVGProps<SVGSVGElement>> = props => {
   return (
-    <SVG viewBox="0 0 30 30" {...props}>
-      <polygon points="15,0 0,30 30,30" />
-    </SVG>
+    <svg viewBox="-1 -1 32 32" {...props}>
+      <polygon points="15,0 00,30 30,30" />
+    </svg>
   );
 };
 
