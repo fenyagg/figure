@@ -1,6 +1,6 @@
 import classNames from 'classnames';
 import { observer } from 'mobx-react-lite';
-import React, { MouseEvent, useContext, useState } from 'react';
+import React, { MouseEvent, useContext, useEffect, useState } from 'react';
 import { StoreContext } from '../../stores';
 import { IFigure } from '../../stores/Canvas';
 import { figuresList } from '../figures';
@@ -28,7 +28,7 @@ const Canvas = () => {
   };
   const onCanvasMouseUp = () => {
     if (!isDragging) {
-      return
+      return;
     }
     setIsDragging(false);
     dragPosition.x = 0;
@@ -36,7 +36,7 @@ const Canvas = () => {
   };
   const onCanvasMouseMove = (e: MouseEvent) => {
     if (!isDragging) {
-      return
+      return;
     }
     const changeX = e.pageX - dragPosition.x;
     const changeY = e.pageY - dragPosition.y;
@@ -44,6 +44,18 @@ const Canvas = () => {
     dragPosition.y = e.pageY;
     context.canvas.moveFigure(changeX, changeY);
   };
+
+  useEffect(() => {
+    const removeActiveFigure = (e: KeyboardEvent) => {
+      if (e.key === 'Delete' && context.canvas.activeFigureId) {
+        context.canvas.deleteActiveFigure();
+      }
+    };
+    window.document.addEventListener('keydown', removeActiveFigure);
+    return () => {
+      window.document.removeEventListener('keydown', removeActiveFigure);
+    };
+  }, [context.canvas]);
 
   return (
     <div

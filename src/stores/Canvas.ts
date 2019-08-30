@@ -1,4 +1,4 @@
-import { SnapshotIn, types } from 'mobx-state-tree';
+import { destroy, SnapshotIn, types } from 'mobx-state-tree';
 import shortid from 'shortid';
 
 const Figure = types.model({
@@ -44,6 +44,14 @@ export const CanvasStore = types
         const figure = self.figures[figureIndex];
         figure.positionLeft += changeX;
         figure.positionTop += changeY;
+      }
+    },
+    deleteActiveFigure() {
+      const activeFigure = self.figures.find(
+        figure => figure.id === self.activeFigureId
+      );
+      if (activeFigure) {
+        destroy(activeFigure);
       }
     },
   }));
