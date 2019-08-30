@@ -42,8 +42,24 @@ export const CanvasStore = types
       );
       if (figureIndex > -1) {
         const figure = self.figures[figureIndex];
-        figure.positionLeft += changeX;
-        figure.positionTop += changeY;
+
+        // set position left
+        const nextPositionLeft = figure.positionLeft + changeX;
+        if (
+          nextPositionLeft > 0 &&
+          nextPositionLeft + figure.width < self.width
+        ) {
+          figure.positionLeft = nextPositionLeft;
+        }
+
+        // set position top
+        const nextPositionTop = figure.positionTop + changeY;
+        if (
+          nextPositionTop > 0 &&
+          nextPositionTop + figure.height < self.height
+        ) {
+          figure.positionTop = nextPositionTop;
+        }
       }
     },
     deleteActiveFigure() {

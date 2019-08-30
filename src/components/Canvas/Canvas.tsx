@@ -1,6 +1,12 @@
 import classNames from 'classnames';
 import { observer } from 'mobx-react-lite';
-import React, { MouseEvent, useContext, useEffect, useState } from 'react';
+import React, {
+  MouseEvent,
+  useContext,
+  useEffect,
+  useRef,
+  useState,
+} from 'react';
 import { StoreContext } from '../../stores';
 import { IFigure } from '../../stores/Canvas';
 import { figuresList } from '../figures';
@@ -10,15 +16,16 @@ const dragPosition = { x: 0, y: 0 };
 
 const Canvas = () => {
   const context = useContext(StoreContext);
+  const canvasRef = useRef(null);
   const [isDragging, setIsDragging] = useState(false);
 
   const onFigureClick = (e: MouseEvent, figureId: string) => {
     if (figureId !== context.canvas.activeFigureId) {
       context.canvas.setActiveFigure(figureId);
     }
-    e.stopPropagation();
   };
   const onFigureMouseDown = (e: MouseEvent, figureId: string) => {
+    e.stopPropagation();
     const isLeftMouseButton = e.button === 0;
     if (isLeftMouseButton && figureId === context.canvas.activeFigureId) {
       setIsDragging(true);
@@ -26,7 +33,7 @@ const Canvas = () => {
       dragPosition.y = e.pageY;
     }
   };
-  const onCanvasMouseUp = () => {
+  const onCanvasMouseUp = (e: MouseEvent) => {
     if (!isDragging) {
       return;
     }
@@ -43,6 +50,16 @@ const Canvas = () => {
     dragPosition.x = e.pageX;
     dragPosition.y = e.pageY;
     context.canvas.moveFigure(changeX, changeY);
+  };
+  const onCanvasMouseDown = (e: MouseEvent) => {
+    if (e.currentTarget === canvasRef.current) {
+      context.canvas.setActiveFigure(null);
+    }
+  };
+  const onCanvasMouseLeave = (e: MouseEvent) => {
+    if (e.currentTarget === canvasRef.current) {
+      setIsDragging(false);
+    }
   };
 
   useEffect(() => {
@@ -61,9 +78,11 @@ const Canvas = () => {
     <div
       className={'canvas'}
       style={{ width: context.canvas.width, height: context.canvas.height }}
-      onClick={() => context.canvas.setActiveFigure(null)}
-      onMouseMove={e => onCanvasMouseMove(e)}
-      onMouseUp={e => onCanvasMouseUp()}
+      onMouseMove={onCanvasMouseMove}
+      onMouseUp={onCanvasMouseUp}
+      onMouseLeave={onCanvasMouseLeave}
+      onMouseDown={onCanvasMouseDown}
+      ref={canvasRef}
     >
       {context.canvas.figures.map((figure: IFigure) => {
         const Figure = figuresList[figure.type];
