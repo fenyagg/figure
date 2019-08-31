@@ -9,7 +9,7 @@ import React, {
 } from 'react';
 import { StoreContext } from '../../stores';
 import { IFigure } from '../../stores/Canvas';
-import { figuresList } from '../figures';
+import { figuresList } from '../svg';
 import './Canvas.scss';
 
 const dragPosition = { x: 0, y: 0 };

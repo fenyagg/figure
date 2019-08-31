@@ -1,4 +1,4 @@
-import { figuresList } from 'components/figures';
+import { figuresList } from 'components/svg';
 import { observer } from 'mobx-react-lite';
 import React, { useContext } from 'react';
 import { StoreContext } from 'stores';
