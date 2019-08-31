@@ -5,8 +5,8 @@ const Figure = types.model({
   id: types.identifier,
   positionLeft: types.optional(types.number, 0),
   positionTop: types.optional(types.number, 0),
-  width: types.optional(types.number, 150),
-  height: types.optional(types.number, 150),
+  width: types.number,
+  height: types.number,
   type: types.string,
 });
 
@@ -20,7 +20,7 @@ export const CanvasStore = types
     height: types.number,
   })
   .actions(self => ({
-    addFigure(figureType: string, width: number, height: number) {
+    addFigure(figureType: string, width = 150, height = 150) {
       const newFigure = {
         id: shortid(),
         type: figureType,

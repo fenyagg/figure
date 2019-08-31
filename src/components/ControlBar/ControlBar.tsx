@@ -6,7 +6,7 @@ import './ControlBar.scss';
 
 const ControlBar = () => {
   const context = useContext(StoreContext);
-  const DEFAULT_FIGURE_SIZE = 150;
+
   return (
     <div className="control-bar">
       <div className="control-bar__figures-list">
@@ -15,13 +15,7 @@ const ControlBar = () => {
           return (
             <Figure
               key={figureName}
-              onClick={() =>
-                context.canvas.addFigure(
-                  figureName,
-                  DEFAULT_FIGURE_SIZE,
-                  DEFAULT_FIGURE_SIZE
-                )
-              }
+              onClick={() => context.canvas.addFigure(figureName)}
               className="control-bar__figure"
             />
           );
