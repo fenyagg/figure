@@ -85,7 +85,7 @@ const Canvas = () => {
       ref={canvasRef}
     >
       {context.canvas.figures.map((figure: IFigure) => {
-        const Figure = figuresList[figure.type];
+        const FigureImg = figuresList[figure.type];
         return (
           <div
             key={figure.id}
@@ -95,14 +95,19 @@ const Canvas = () => {
               left: figure.positionLeft,
               top: figure.positionTop,
             }}
-            className={classNames('canvas__figure-container', {
+            className={classNames('figure', {
               _active: context.canvas.activeFigureId === figure.id,
               _dragging: isDragging,
             })}
             onClick={e => onFigureClick(e, figure.id)}
             onMouseDown={e => onFigureMouseDown(e, figure.id)}
           >
-            <Figure className="canvas__figure" />
+            <div className="figure__dot _left-top" />
+            <div className="figure__dot _left-bot" />
+            <div className="figure__dot _right-top" />
+            <div className="figure__dot _right-bot" />
+
+            <FigureImg className="figure__img" />
           </div>
         );
       })}
