@@ -1,0 +1,59 @@
+$dotOffset: -7px;
+
+.figure {
+  position: absolute;
+
+  &._active {
+    outline: 1px solid red;
+    z-index: 1;
+    cursor: grab;
+
+    &._dragging {
+      cursor: grabbing;
+      opacity: .5;
+    }
+  }
+
+  &__img {
+    position: relative;
+    fill: #FF9800;
+    stroke: black;
+    stroke-linejoin: round;
+    width: 100%;
+    height: 100%;
+  }
+
+  &__dot {
+    position: absolute;
+    width: 14px;
+    height: 14px;
+    background-color: red;
+    z-index: 1;
+    display: none;
+
+    .figure._active & {
+      display: block;
+    }
+
+    &._left-top {
+      cursor: nw-resize;
+      left: $dotOffset;
+      top: $dotOffset;
+    }
+    &._left-bot {
+      cursor: ne-resize;
+      left: $dotOffset;
+      bottom: $dotOffset;
+    }
+    &._right-top {
+      cursor: ne-resize;
+      right: $dotOffset;
+      top: $dotOffset;
+    }
+    &._right-bot {
+      cursor: nw-resize;
+      right: $dotOffset;
+      bottom: $dotOffset;
+    }
+  }
+}

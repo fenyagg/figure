@@ -12,12 +12,23 @@ const Figure = types.model({
 
 export type IFigure = SnapshotIn<typeof Figure>;
 
+const DragPosition = types.model({
+  x: types.number,
+  y: types.number,
+});
+
 export const CanvasStore = types
   .model({
     figures: types.array(Figure),
     activeFigureId: types.maybeNull(types.string),
     width: types.number,
     height: types.number,
+    isDragging: types.optional(types.boolean, false),
+    dragPosition: types.optional(DragPosition, {
+      x: 0,
+      y: 0,
+    }),
+    isResizing: types.optional(types.boolean, false),
   })
   .actions(self => ({
     addFigure(figureType: string, width = 150, height = 150) {
@@ -33,9 +44,11 @@ export const CanvasStore = types
       this.setActiveFigure(newFigure.id);
       return newFigure;
     },
+
     setActiveFigure(figureId: string | null) {
       self.activeFigureId = figureId;
     },
+
     moveFigure(changeX: number, changeY: number) {
       const figureIndex = self.figures.findIndex(
         figure => figure.id === self.activeFigureId
@@ -44,24 +57,27 @@ export const CanvasStore = types
         const figure = self.figures[figureIndex];
 
         // set position left
-        const nextPositionLeft = figure.positionLeft + changeX;
-        if (
-          nextPositionLeft > 0 &&
-          nextPositionLeft + figure.width < self.width
-        ) {
-          figure.positionLeft = nextPositionLeft;
+        let nextPositionLeft = figure.positionLeft + changeX;
+        if (nextPositionLeft < 0) {
+          nextPositionLeft = 0;
         }
+        if (nextPositionLeft > self.width - figure.width) {
+          nextPositionLeft = self.width - figure.width;
+        }
+        figure.positionLeft = nextPositionLeft;
 
         // set position top
-        const nextPositionTop = figure.positionTop + changeY;
-        if (
-          nextPositionTop > 0 &&
-          nextPositionTop + figure.height < self.height
-        ) {
-          figure.positionTop = nextPositionTop;
+        let nextPositionTop = figure.positionTop + changeY;
+        if (nextPositionTop < 0) {
+          nextPositionTop = 0;
         }
+        if (nextPositionTop > self.height - figure.height) {
+          nextPositionTop = self.height - figure.height;
+        }
+        figure.positionTop = nextPositionTop;
       }
     },
+
     deleteActiveFigure() {
       const activeFigure = self.figures.find(
         figure => figure.id === self.activeFigureId
@@ -69,5 +85,18 @@ export const CanvasStore = types
       if (activeFigure) {
         destroy(activeFigure);
       }
+    },
+
+    setIsDragging(isDragging: boolean) {
+      self.isDragging = isDragging;
+    },
+
+    setDragPosition(x: number, y: number) {
+      self.dragPosition.x = x;
+      self.dragPosition.y = y;
+    },
+
+    setIsResizing(isResizing: boolean) {
+      self.isResizing = isResizing;
     },
   }));

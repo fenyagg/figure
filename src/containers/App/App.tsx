@@ -1,15 +1,8 @@
 import React from 'react';
-import Canvas from '../../components/Canvas/Canvas';
-import ControlBar from '../../components/ControlBar/ControlBar';
-import './App.scss';
+import Editor from '../../components/Editor/Editor';
 
 const App = () => {
-  return (
-    <div className="container">
-      <ControlBar />
-      <Canvas />
-    </div>
-  );
+  return <Editor />;
 };
 
 export default App;
