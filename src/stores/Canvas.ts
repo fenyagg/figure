@@ -4,8 +4,8 @@ import { EResizeType } from './canvas.types';
 
 const Figure = types.model({
   id: types.identifier,
-  positionLeft: types.optional(types.number, 0),
-  positionTop: types.optional(types.number, 0),
+  left: types.number,
+  top: types.number,
   width: types.number,
   height: types.number,
   type: types.string,
@@ -32,8 +32,8 @@ export const CanvasStore = types
         type: figureType,
         width,
         height,
-        positionLeft: self.width / 2 - width / 2,
-        positionTop: self.height / 2 - height / 2,
+        left: self.width / 2 - width / 2,
+        top: self.height / 2 - height / 2,
       };
       self.figures.push(newFigure);
       this.setActiveFigure(newFigure.id);
@@ -52,24 +52,24 @@ export const CanvasStore = types
         return;
       }
       // set position left
-      let nextPositionLeft = figure.positionLeft! + changeX;
+      let nextPositionLeft = figure.left + changeX;
       if (nextPositionLeft < 0) {
         nextPositionLeft = 0;
       }
       if (nextPositionLeft > self.width - figure.width) {
         nextPositionLeft = self.width - figure.width;
       }
-      figure.positionLeft = nextPositionLeft;
+      figure.left = nextPositionLeft;
 
       // set position top
-      let nextPositionTop = figure.positionTop! + changeY;
+      let nextPositionTop = figure.top + changeY;
       if (nextPositionTop < 0) {
         nextPositionTop = 0;
       }
       if (nextPositionTop > self.height - figure.height) {
         nextPositionTop = self.height - figure.height;
       }
-      figure.positionTop = nextPositionTop;
+      figure.top = nextPositionTop;
     },
 
     deleteActiveFigure() {
@@ -93,28 +93,45 @@ export const CanvasStore = types
       const figure: IFigure | undefined = self.figures.find(
         figureItem => figureItem.id === self.activeFigureId
       );
-      const unitChange =
-        Math.abs(changeX) > Math.abs(changeY) ? changeX : changeY;
-      if (!figure || !unitChange) {
+      if (!figure || (!changeX && !changeY)) {
         return;
       }
+      const figureChanges = {
+        left: figure.left,
+        top: figure.top,
+        width: figure.width,
+        height: figure.height,
+      };
       switch (self.resizingType) {
         case EResizeType.LEFT_TOP:
-          const figureChanges = {
-            left: figure.positionLeft! + unitChange,
-            top: figure.positionTop! + unitChange,
-            width: figure.width - unitChange,
-            height: figure.width - unitChange,
-          };
-          if (figureChanges.left < 0 || figureChanges.top < 0) {
-            return;
-          }
-          figure.positionLeft = figureChanges.left;
-          figure.positionTop = figureChanges.top;
-          figure.width = figureChanges.width;
-          figure.height = figureChanges.height;
+          figureChanges.left += changeX;
+          figureChanges.top += changeY;
+          figureChanges.width -= changeX;
+          figureChanges.height -= changeY;
+          break;
+        case EResizeType.LEFT_BOT:
+          figureChanges.left += changeX;
+          figureChanges.width -= changeX;
+          figureChanges.height += changeY;
+          break;
+        case EResizeType.RIGHT_TOP:
+          figureChanges.top += changeY;
+          figureChanges.width += changeX;
+          figureChanges.height -= changeY;
+          break;
+        case EResizeType.RIGHT_BOT:
+          figureChanges.width += changeX;
+          figureChanges.height += changeY;
           break;
       }
+      // todo: continue
+      if (figureChanges.left < 0 || figureChanges.top < 0) {
+        return;
+      }
+      figure.left = figureChanges.left;
+      figure.top = figureChanges.top;
+      figure.width = figureChanges.width;
+      figure.height = figureChanges.height;
     },
   }))
   .views(self => ({

@@ -57,15 +57,15 @@ const Figure: React.FC<IProps> = ({ figure }) => {
     }
   };
 
-  const FigureImg = figuresList[figure.type];
+  const FigureSvg = figuresList[figure.type];
   return (
     <div
       key={figure.id}
       style={{
         width: figure.width,
         height: figure.height,
-        left: figure.positionLeft,
-        top: figure.positionTop,
+        left: figure.left,
+        top: figure.top,
       }}
       className={classNames('figure', {
         _active: isActive,
@@ -82,7 +82,7 @@ const Figure: React.FC<IProps> = ({ figure }) => {
         />
       ))}
 
-      <FigureImg className="figure__img" />
+      <FigureSvg preserveAspectRatio="none" className="figure__img" />
     </div>
   );
 };
