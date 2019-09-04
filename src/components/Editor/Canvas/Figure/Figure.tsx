@@ -47,7 +47,6 @@ const Figure: React.FC<IProps> = ({ figure }) => {
     const isLeftMouseButton = e.button === 0;
     if (isLeftMouseButton && isActive) {
       context.canvas.setIsDragging(true);
-      context.canvas.setDragPosition(e.pageX, e.pageY);
     }
   };
   const onDotMouseDown = (e: MouseEvent, resizeType: EResizeType) => {
@@ -55,7 +54,6 @@ const Figure: React.FC<IProps> = ({ figure }) => {
     const isLeftMouseButton = e.button === 0;
     if (isLeftMouseButton && isActive) {
       context.canvas.setResizingType(resizeType);
-      context.canvas.setDragPosition(e.pageX, e.pageY);
     }
   };
 

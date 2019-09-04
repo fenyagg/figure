@@ -13,11 +13,6 @@ const Figure = types.model({
 
 export type IFigure = SnapshotIn<typeof Figure>;
 
-const DragPosition = types.model({
-  x: types.number,
-  y: types.number,
-});
-
 export const CanvasStore = types
   .model({
     figures: types.array(Figure),
@@ -25,10 +20,6 @@ export const CanvasStore = types
     width: types.number,
     height: types.number,
     isDragging: types.optional(types.boolean, false),
-    dragPosition: types.optional(DragPosition, {
-      x: 0,
-      y: 0,
-    }),
     resizingType: types.optional(
       types.enumeration(Object.values(EResizeType)),
       EResizeType.DISABLE
@@ -92,11 +83,6 @@ export const CanvasStore = types
 
     setIsDragging(isDragging: boolean) {
       self.isDragging = isDragging;
-    },
-
-    setDragPosition(x: number, y: number) {
-      self.dragPosition.x = x;
-      self.dragPosition.y = y;
     },
 
     setResizingType(type: EResizeType) {

@@ -10,16 +10,11 @@ const Editor = () => {
   const context = useContext(StoreContext);
 
   const onMouseMove = (e: MouseEvent) => {
-    const changeX = e.pageX - context.canvas.dragPosition.x;
-    const changeY = e.pageY - context.canvas.dragPosition.y;
     if (context.canvas.isDragging) {
-      context.canvas.setDragPosition(e.pageX, e.pageY);
-      context.canvas.moveFigure(changeX, changeY);
+      context.canvas.moveFigure(e.movementX, e.movementY);
     }
-
     if (context.canvas.isResizing) {
-      context.canvas.setDragPosition(e.pageX, e.pageY);
-      context.canvas.resizeFigure(changeX, changeY);
+      context.canvas.resizeFigure(e.movementX, e.movementY);
     }
   };
   const disableActions = () => {
