@@ -1,5 +1,6 @@
 import { destroy, SnapshotIn, types } from 'mobx-state-tree';
 import shortid from 'shortid';
+import { EResizeType } from './canvas.types';
 
 const Figure = types.model({
   id: types.identifier,
@@ -28,7 +29,10 @@ export const CanvasStore = types
       x: 0,
       y: 0,
     }),
-    isResizing: types.optional(types.boolean, false),
+    resizingType: types.optional(
+      types.enumeration(Object.values(EResizeType)),
+      EResizeType.DISABLE
+    ),
   })
   .actions(self => ({
     addFigure(figureType: string, width = 150, height = 150) {
@@ -50,32 +54,31 @@ export const CanvasStore = types
     },
 
     moveFigure(changeX: number, changeY: number) {
-      const figureIndex = self.figures.findIndex(
-        figure => figure.id === self.activeFigureId
+      const figure: IFigure | undefined = self.figures.find(
+        figureItem => figureItem.id === self.activeFigureId
       );
-      if (figureIndex > -1) {
-        const figure = self.figures[figureIndex];
-
-        // set position left
-        let nextPositionLeft = figure.positionLeft + changeX;
-        if (nextPositionLeft < 0) {
-          nextPositionLeft = 0;
-        }
-        if (nextPositionLeft > self.width - figure.width) {
-          nextPositionLeft = self.width - figure.width;
-        }
-        figure.positionLeft = nextPositionLeft;
-
-        // set position top
-        let nextPositionTop = figure.positionTop + changeY;
-        if (nextPositionTop < 0) {
-          nextPositionTop = 0;
-        }
-        if (nextPositionTop > self.height - figure.height) {
-          nextPositionTop = self.height - figure.height;
-        }
-        figure.positionTop = nextPositionTop;
+      if (!figure) {
+        return;
       }
+      // set position left
+      let nextPositionLeft = figure.positionLeft! + changeX;
+      if (nextPositionLeft < 0) {
+        nextPositionLeft = 0;
+      }
+      if (nextPositionLeft > self.width - figure.width) {
+        nextPositionLeft = self.width - figure.width;
+      }
+      figure.positionLeft = nextPositionLeft;
+
+      // set position top
+      let nextPositionTop = figure.positionTop! + changeY;
+      if (nextPositionTop < 0) {
+        nextPositionTop = 0;
+      }
+      if (nextPositionTop > self.height - figure.height) {
+        nextPositionTop = self.height - figure.height;
+      }
+      figure.positionTop = nextPositionTop;
     },
 
     deleteActiveFigure() {
@@ -96,7 +99,40 @@ export const CanvasStore = types
       self.dragPosition.y = y;
     },
 
-    setIsResizing(isResizing: boolean) {
-      self.isResizing = isResizing;
+    setResizingType(type: EResizeType) {
+      self.resizingType = type;
+    },
+
+    resizeFigure(changeX: number, changeY: number) {
+      const figure: IFigure | undefined = self.figures.find(
+        figureItem => figureItem.id === self.activeFigureId
+      );
+      const unitChange =
+        Math.abs(changeX) > Math.abs(changeY) ? changeX : changeY;
+      if (!figure || !unitChange) {
+        return;
+      }
+      switch (self.resizingType) {
+        case EResizeType.LEFT_TOP:
+          const figureChanges = {
+            left: figure.positionLeft! + unitChange,
+            top: figure.positionTop! + unitChange,
+            width: figure.width - unitChange,
+            height: figure.width - unitChange,
+          };
+          if (figureChanges.left < 0 || figureChanges.top < 0) {
+            return;
+          }
+          figure.positionLeft = figureChanges.left;
+          figure.positionTop = figureChanges.top;
+          figure.width = figureChanges.width;
+          figure.height = figureChanges.height;
+          break;
+      }
+    },
+  }))
+  .views(self => ({
+    get isResizing() {
+      return self.resizingType !== EResizeType.DISABLE;
     },
   }));

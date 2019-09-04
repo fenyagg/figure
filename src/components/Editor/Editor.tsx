@@ -1,6 +1,7 @@
 import { observer } from 'mobx-react-lite';
 import React, { MouseEvent, useContext, useEffect } from 'react';
 import { StoreContext } from 'stores';
+import { EResizeType } from '../../stores/canvas.types';
 import Canvas from './Canvas/Canvas';
 import ControlBar from './ControlBar/ControlBar';
 import './Editor.scss';
@@ -9,19 +10,25 @@ const Editor = () => {
   const context = useContext(StoreContext);
 
   const onMouseMove = (e: MouseEvent) => {
-    if (!context.canvas.isDragging) {
-      return;
-    }
     const changeX = e.pageX - context.canvas.dragPosition.x;
     const changeY = e.pageY - context.canvas.dragPosition.y;
-    context.canvas.setDragPosition(e.pageX, e.pageY);
-    context.canvas.moveFigure(changeX, changeY);
-  };
-  const onMouseUp = (e: MouseEvent) => {
-    if (!context.canvas.isDragging) {
-      return;
+    if (context.canvas.isDragging) {
+      context.canvas.setDragPosition(e.pageX, e.pageY);
+      context.canvas.moveFigure(changeX, changeY);
     }
-    context.canvas.setIsDragging(false);
+
+    if (context.canvas.isResizing) {
+      context.canvas.setDragPosition(e.pageX, e.pageY);
+      context.canvas.resizeFigure(changeX, changeY);
+    }
+  };
+  const disableActions = () => {
+    if (context.canvas.isDragging) {
+      context.canvas.setIsDragging(false);
+    }
+    if (context.canvas.isResizing) {
+      context.canvas.setResizingType(EResizeType.DISABLE);
+    }
   };
 
   useEffect(() => {
@@ -44,7 +51,8 @@ const Editor = () => {
   return (
     <div
       onMouseMove={onMouseMove}
-      onMouseUp={onMouseUp}
+      onMouseUp={disableActions}
+      onMouseLeave={disableActions}
       className="main-container"
     >
       <div className="content">

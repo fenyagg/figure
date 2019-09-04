@@ -3,12 +3,32 @@ import { observer } from 'mobx-react-lite';
 import React, { MouseEvent, useContext, useMemo } from 'react';
 import { StoreContext } from 'stores';
 import { IFigure } from '../../../../stores/Canvas';
+import { EResizeType } from '../../../../stores/canvas.types';
 import { figuresList } from '../../../svg';
 import './Figure.scss';
 
 interface IProps {
   figure: IFigure;
 }
+
+const dotList = [
+  {
+    type: EResizeType.LEFT_TOP,
+    className: '_left-top',
+  },
+  {
+    type: EResizeType.LEFT_BOT,
+    className: '_left-bot',
+  },
+  {
+    type: EResizeType.RIGHT_TOP,
+    className: '_right-top',
+  },
+  {
+    type: EResizeType.RIGHT_BOT,
+    className: '_right-bot',
+  },
+];
 
 const Figure: React.FC<IProps> = ({ figure }) => {
   const context = useContext(StoreContext);
@@ -30,8 +50,13 @@ const Figure: React.FC<IProps> = ({ figure }) => {
       context.canvas.setDragPosition(e.pageX, e.pageY);
     }
   };
-  const onDotMouseDown = (e: MouseEvent) => {
-    context.canvas.setIsResizing(true);
+  const onDotMouseDown = (e: MouseEvent, resizeType: EResizeType) => {
+    e.stopPropagation();
+    const isLeftMouseButton = e.button === 0;
+    if (isLeftMouseButton && isActive) {
+      context.canvas.setResizingType(resizeType);
+      context.canvas.setDragPosition(e.pageX, e.pageY);
+    }
   };
 
   const FigureImg = figuresList[figure.type];
@@ -51,10 +76,13 @@ const Figure: React.FC<IProps> = ({ figure }) => {
       onClick={onFigureClick}
       onMouseDown={onFigureMouseDown}
     >
-      <div onMouseDown={onDotMouseDown} className="figure__dot _left-top" />
-      <div className="figure__dot _left-bot" />
-      <div className="figure__dot _right-top" />
-      <div className="figure__dot _right-bot" />
+      {dotList.map(dot => (
+        <div
+          key={dot.type}
+          onMouseDown={e => onDotMouseDown(e, dot.type)}
+          className={`figure__dot ${dot.className}`}
+        />
+      ))}
 
       <FigureImg className="figure__img" />
     </div>
