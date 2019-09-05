@@ -1,6 +1,6 @@
 import { observer } from 'mobx-react-lite';
 import React, { MouseEvent, useContext, useRef } from 'react';
-import { StoreContext } from '../../../stores';
+import { StoreContext } from 'stores';
 import './Canvas.scss';
 import Figure from './Figure/Figure';
 

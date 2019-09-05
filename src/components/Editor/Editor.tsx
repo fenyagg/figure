@@ -1,13 +1,16 @@
 import { observer } from 'mobx-react-lite';
-import React, { MouseEvent, useContext, useEffect } from 'react';
+import React, { MouseEvent, useContext, useEffect, useRef } from 'react';
 import { StoreContext } from 'stores';
-import { EResizeType } from '../../stores/canvas.types';
 import Canvas from './Canvas/Canvas';
 import ControlBar from './ControlBar/ControlBar';
 import './Editor.scss';
 
 const Editor = () => {
   const context = useContext(StoreContext);
+  const editorRef = useRef(null);
+  const isEditorTarget = (target: EventTarget) => {
+    return target === editorRef.current;
+  };
 
   const onMouseMove = (e: MouseEvent) => {
     if (context.canvas.isDragging) {
@@ -17,12 +20,14 @@ const Editor = () => {
       context.canvas.resizeFigure(e.movementX, e.movementY);
     }
   };
-  const disableActions = () => {
-    if (context.canvas.isDragging) {
-      context.canvas.setIsDragging(false);
-    }
-    if (context.canvas.isResizing) {
-      context.canvas.setResizingType(EResizeType.DISABLE);
+  const disableActions = (e: MouseEvent) => {
+    if (isEditorTarget(e.currentTarget)) {
+      if (context.canvas.isDragging) {
+        context.canvas.setIsDragging(false);
+      }
+      if (context.canvas.isResizing) {
+        context.canvas.stopResizing();
+      }
     }
   };
 
@@ -49,6 +54,7 @@ const Editor = () => {
       onMouseUp={disableActions}
       onMouseLeave={disableActions}
       className="main-container"
+      ref={editorRef}
     >
       <div className="content">
         <ControlBar />

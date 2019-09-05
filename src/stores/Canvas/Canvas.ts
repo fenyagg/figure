@@ -24,6 +24,8 @@ export const CanvasStore = types
       types.enumeration(Object.values(EResizeType)),
       EResizeType.DISABLE
     ),
+    minFigureWidth: 100,
+    minFigureHeight: 100,
   })
   .actions(self => ({
     addFigure(figureType: string, width = 150, height = 150) {
@@ -89,6 +91,10 @@ export const CanvasStore = types
       self.resizingType = type;
     },
 
+    stopResizing() {
+      self.resizingType = EResizeType.DISABLE;
+    },
+
     resizeFigure(changeX: number, changeY: number) {
       const figure: IFigure | undefined = self.figures.find(
         figureItem => figureItem.id === self.selectedFigureId
@@ -102,6 +108,7 @@ export const CanvasStore = types
         width: figure.width,
         height: figure.height,
       };
+      // set sizes and position based on resize type
       switch (self.resizingType) {
         case EResizeType.LEFT_TOP:
           figureChanges.left += changeX;
@@ -124,10 +131,18 @@ export const CanvasStore = types
           figureChanges.height += changeY;
           break;
       }
-      // todo: continue
-      if (figureChanges.left < 0 || figureChanges.top < 0) {
+      // save figure in canvas and save min size
+      if (
+        figureChanges.left < 0 ||
+        figureChanges.top < 0 ||
+        figureChanges.left + figureChanges.width > self.width ||
+        figureChanges.top + figureChanges.height > self.height ||
+        figureChanges.width < self.minFigureWidth ||
+        figureChanges.height < self.minFigureHeight
+      ) {
         return;
       }
+      // update figure
       figure.left = figureChanges.left;
       figure.top = figureChanges.top;
       figure.width = figureChanges.width;

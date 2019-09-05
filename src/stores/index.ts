@@ -1,6 +1,6 @@
 import { types } from 'mobx-state-tree';
 import React from 'react';
-import { CanvasStore } from './Canvas';
+import { CanvasStore } from './Canvas/Canvas';
 
 const model = types.model({
   canvas: CanvasStore,

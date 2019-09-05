@@ -2,8 +2,8 @@ import classNames from 'classnames';
 import { observer } from 'mobx-react-lite';
 import React, { MouseEvent, useContext, useMemo } from 'react';
 import { StoreContext } from 'stores';
-import { IFigure } from '../../../../stores/Canvas';
-import { EResizeType } from '../../../../stores/canvas.types';
+import { IFigure } from 'stores/Canvas/Canvas';
+import { EResizeType } from 'stores/Canvas/canvas.types';
 import { figuresList } from '../../../svg';
 import './Figure.scss';
 
@@ -64,8 +64,11 @@ const Figure: React.FC<IProps> = ({ figure }) => {
       style={{
         width: figure.width,
         height: figure.height,
-        left: figure.left,
-        top: figure.top,
+        transform: `translate3d(
+          ${figure.left}px,
+          ${figure.top}px,
+          0
+        )`,
       }}
       className={classNames('figure', {
         _active: isActive,
