@@ -34,8 +34,8 @@ const Figure: React.FC<IProps> = ({ figure }) => {
   const context = useContext(StoreContext);
 
   const isActive = useMemo(() => {
-    return figure.id === context.canvas.activeFigureId;
-  }, [figure.id, context.canvas.activeFigureId]);
+    return figure.id === context.canvas.selectedFigureId;
+  }, [figure.id, context.canvas.selectedFigureId]);
 
   const onFigureClick = () => {
     if (!isActive) {

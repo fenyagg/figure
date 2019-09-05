@@ -28,7 +28,7 @@ const Editor = () => {
 
   useEffect(() => {
     const onKeyDown = (e: KeyboardEvent) => {
-      if (context.canvas.activeFigureId) {
+      if (context.canvas.selectedFigureId) {
         if (e.key === 'Delete') {
           context.canvas.deleteActiveFigure();
         }

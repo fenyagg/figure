@@ -8,12 +8,15 @@ const Canvas = () => {
   const context = useContext(StoreContext);
   const canvasRef = useRef(null);
   const onMouseDown = (e: MouseEvent) => {
-    if (e.currentTarget === canvasRef.current) {
+    if (
+      e.currentTarget === canvasRef.current &&
+      context.canvas.selectedFigureId
+    ) {
       context.canvas.setActiveFigure(null);
     }
   };
   const onMouseLeave = (e: MouseEvent) => {
-    if (e.currentTarget === canvasRef.current) {
+    if (e.currentTarget === canvasRef.current && context.canvas.isDragging) {
       context.canvas.setIsDragging(false);
     }
   };

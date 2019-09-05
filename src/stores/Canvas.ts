@@ -16,7 +16,7 @@ export type IFigure = SnapshotIn<typeof Figure>;
 export const CanvasStore = types
   .model({
     figures: types.array(Figure),
-    activeFigureId: types.maybeNull(types.string),
+    selectedFigureId: types.maybeNull(types.string),
     width: types.number,
     height: types.number,
     isDragging: types.optional(types.boolean, false),
@@ -41,12 +41,12 @@ export const CanvasStore = types
     },
 
     setActiveFigure(figureId: string | null) {
-      self.activeFigureId = figureId;
+      self.selectedFigureId = figureId;
     },
 
     moveFigure(changeX: number, changeY: number) {
       const figure: IFigure | undefined = self.figures.find(
-        figureItem => figureItem.id === self.activeFigureId
+        figureItem => figureItem.id === self.selectedFigureId
       );
       if (!figure) {
         return;
@@ -74,7 +74,7 @@ export const CanvasStore = types
 
     deleteActiveFigure() {
       const activeFigure = self.figures.find(
-        figure => figure.id === self.activeFigureId
+        figure => figure.id === self.selectedFigureId
       );
       if (activeFigure) {
         destroy(activeFigure);
@@ -91,7 +91,7 @@ export const CanvasStore = types
 
     resizeFigure(changeX: number, changeY: number) {
       const figure: IFigure | undefined = self.figures.find(
-        figureItem => figureItem.id === self.activeFigureId
+        figureItem => figureItem.id === self.selectedFigureId
       );
       if (!figure || (!changeX && !changeY)) {
         return;

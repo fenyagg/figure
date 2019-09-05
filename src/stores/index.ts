@@ -9,7 +9,6 @@ const model = types.model({
 export const store = model.create({
   canvas: {
     figures: [],
-    activeFigureId: null,
     width: 800,
     height: 600,
   },
