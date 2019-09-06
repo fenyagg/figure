@@ -13,7 +13,13 @@ export const store = model.create({
   canvas: {
     figures: [],
   },
-  history: {},
+  history: {
+    snapShots: [
+      {
+        figures: [],
+      },
+    ],
+  },
 });
 
 export type IStore = typeof store;

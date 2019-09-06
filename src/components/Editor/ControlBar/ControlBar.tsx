@@ -22,8 +22,18 @@ const ControlBar = () => {
         })}
       </div>
       <div className="control-bar__nav">
-        <div className="control-bar__nav-link">&larr; prev</div>
-        <div className="control-bar__nav-link">next &rarr;</div>
+        <div
+          onClick={() => context.history.goByStep(-1)}
+          className="control-bar__nav-link"
+        >
+          &larr; prev
+        </div>
+        <div
+          onClick={() => context.history.goByStep(1)}
+          className="control-bar__nav-link"
+        >
+          next &rarr;
+        </div>
       </div>
     </div>
   );
