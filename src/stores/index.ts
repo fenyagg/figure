@@ -1,4 +1,4 @@
-import { applyAction, getPath, onAction, onSnapshot, types } from 'mobx-state-tree';
+import { onSnapshot, types } from 'mobx-state-tree';
 import React from 'react';
 import { CanvasStore } from './Canvas/Canvas';
 import { EResizeType } from './Canvas/canvas.types';
@@ -15,6 +15,8 @@ export const store = model.create({
   },
   history: {},
 });
+
+export type IStore = typeof store;
 
 onSnapshot(store.canvas, newSnapshot => {
   if (

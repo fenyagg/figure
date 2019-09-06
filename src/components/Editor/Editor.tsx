@@ -1,12 +1,12 @@
+import { useStore } from 'hooks/useStore';
 import { observer } from 'mobx-react-lite';
-import React, { MouseEvent, useContext, useEffect, useRef } from 'react';
-import { StoreContext } from 'stores';
+import React, { MouseEvent, useEffect, useRef } from 'react';
 import Canvas from './Canvas/Canvas';
 import ControlBar from './ControlBar/ControlBar';
 import './Editor.scss';
 
 const Editor = () => {
-  const context = useContext(StoreContext);
+  const context = useStore();
   const editorRef = useRef(null);
   const isEditorTarget = (target: EventTarget) => {
     return target === editorRef.current;

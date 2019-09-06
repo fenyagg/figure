@@ -1,11 +1,11 @@
 import { figuresList } from 'components/svg';
+import { useStore } from 'hooks/useStore';
 import { observer } from 'mobx-react-lite';
-import React, { useContext } from 'react';
-import { StoreContext } from 'stores';
+import React from 'react';
 import './ControlBar.scss';
 
 const ControlBar = () => {
-  const context = useContext(StoreContext);
+  const context = useStore();
 
   return (
     <div className="control-bar">

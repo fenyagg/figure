@@ -1,7 +1,7 @@
 import classNames from 'classnames';
+import { useStore } from 'hooks/useStore';
 import { observer } from 'mobx-react-lite';
-import React, { MouseEvent, useContext, useMemo } from 'react';
-import { StoreContext } from 'stores';
+import React, { MouseEvent, useMemo } from 'react';
 import { IFigure } from 'stores/Canvas/Canvas';
 import { EResizeType } from 'stores/Canvas/canvas.types';
 import { figuresList } from '../../../svg';
@@ -31,7 +31,7 @@ const dotList = [
 ];
 
 const Figure: React.FC<IProps> = ({ figure }) => {
-  const context = useContext(StoreContext);
+  const context = useStore();
 
   const isActive = useMemo(() => {
     return figure.id === context.canvas.selectedFigureId;

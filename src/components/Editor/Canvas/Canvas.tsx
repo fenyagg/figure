@@ -1,11 +1,11 @@
+import { useStore } from 'hooks/useStore';
 import { observer } from 'mobx-react-lite';
-import React, { MouseEvent, useContext, useRef } from 'react';
-import { StoreContext } from 'stores';
+import React, { MouseEvent, useRef } from 'react';
 import './Canvas.scss';
 import Figure from './Figure/Figure';
 
 const Canvas = () => {
-  const context = useContext(StoreContext);
+  const context = useStore();
   const canvasRef = useRef(null);
   const onMouseDown = (e: MouseEvent) => {
     if (
