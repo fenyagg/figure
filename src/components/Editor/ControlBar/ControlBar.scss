@@ -34,5 +34,10 @@
 		line-height: 1;
 		margin: 0 10px;
 		cursor: pointer;
+
+		&._disabled {
+			opacity: .5;
+			pointer-events: none;
+		}
 	}
 }

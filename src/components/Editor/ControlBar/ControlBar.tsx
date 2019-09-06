@@ -1,3 +1,4 @@
+import classNames from 'classnames';
 import { figuresList } from 'components/svg';
 import { useStore } from 'hooks/useStore';
 import { observer } from 'mobx-react-lite';
@@ -23,14 +24,20 @@ const ControlBar = () => {
       </div>
       <div className="control-bar__nav">
         <div
-          onClick={() => context.history.goByStep(-1)}
-          className="control-bar__nav-link"
+          onClick={() => context.history.changeIndexBy(-1)}
+          className={classNames({
+            'control-bar__nav-link': true,
+            _disabled: !context.history.canBack,
+          })}
         >
           &larr; prev
         </div>
         <div
-          onClick={() => context.history.goByStep(1)}
-          className="control-bar__nav-link"
+          onClick={() => context.history.changeIndexBy(1)}
+          className={classNames({
+            'control-bar__nav-link': true,
+            _disabled: !context.history.canForward,
+          })}
         >
           next &rarr;
         </div>
