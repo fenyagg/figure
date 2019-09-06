@@ -17,15 +17,15 @@ export const CanvasStore = types
   .model({
     figures: types.array(Figure),
     selectedFigureId: types.maybeNull(types.string),
-    width: types.number,
-    height: types.number,
+    width: types.optional(types.number, 800),
+    height: types.optional(types.number, 800),
     isDragging: types.optional(types.boolean, false),
     resizingType: types.optional(
       types.enumeration(Object.values(EResizeType)),
       EResizeType.DISABLE
     ),
-    minFigureWidth: 100,
-    minFigureHeight: 100,
+    minFigureWidth: types.optional(types.number, 100),
+    minFigureHeight: types.optional(types.number, 100),
   })
   .actions(self => ({
     addFigure(figureType: string, width = 150, height = 150) {
