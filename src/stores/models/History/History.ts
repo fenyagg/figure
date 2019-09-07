@@ -5,6 +5,7 @@ import {
   SnapshotOut,
   types,
 } from 'mobx-state-tree';
+import { canvasService } from 'services/CanvasService';
 import { CanvasStore } from '../Canvas/Canvas';
 
 const HistoryModel = types.model(CanvasStore.properties);
@@ -34,15 +35,19 @@ export const HistoryStore = types
       }
       self.snapShots.push(snap);
       self.activeSnapIndex = self.snapShots.length - 1;
+
+      canvasService.setValue(snap);
     },
     changeIndexBy(indexChange: number) {
       const targetSnapIndex = self.activeSnapIndex + indexChange;
-      const prevSnap = self.snapShots[targetSnapIndex];
+      const targetSnap = self.snapShots[targetSnapIndex];
       const rootStore = getRoot(self);
 
-      if (prevSnap) {
+      if (targetSnap) {
         self.activeSnapIndex = targetSnapIndex;
-        applySnapshot(rootStore.canvas, getSnapshot(prevSnap));
+        applySnapshot(rootStore.canvas, getSnapshot(targetSnap));
+
+        canvasService.setValue(targetSnap);
       }
     },
   }));
