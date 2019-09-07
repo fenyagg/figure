@@ -11,12 +11,12 @@ const ControlBar = () => {
   return (
     <div className="control-bar">
       <div className="control-bar__figures-list">
-        {Object.keys(figuresList).map(figureName => {
-          const Figure = figuresList[figureName];
+        {context.canvas.figureTypes.map(figureType => {
+          const Figure = figuresList[figureType];
           return (
             <Figure
-              key={figureName}
-              onClick={() => context.canvas.addFigure(figureName)}
+              key={figureType}
+              onClick={() => context.canvas.addFigure(figureType)}
               className="control-bar__figure"
             />
           );

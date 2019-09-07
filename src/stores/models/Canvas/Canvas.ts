@@ -1,6 +1,6 @@
 import { destroy, SnapshotIn, types } from 'mobx-state-tree';
 import shortid from 'shortid';
-import { EResizeType } from './canvas.types';
+import { EFigureType, EResizeType } from './canvas.types';
 
 const Figure = types.model({
   id: types.identifier,
@@ -8,7 +8,7 @@ const Figure = types.model({
   top: types.number,
   width: types.number,
   height: types.number,
-  type: types.string,
+  type: types.enumeration(Object.values(EFigureType)),
 });
 
 export type IFigure = SnapshotIn<typeof Figure>;
@@ -26,9 +26,13 @@ export const CanvasStore = types
     ),
     minFigureWidth: types.optional(types.number, 100),
     minFigureHeight: types.optional(types.number, 100),
+    figureTypes: types.optional(
+      types.array(types.enumeration(Object.values(EFigureType))),
+      Object.values(EFigureType)
+    ),
   })
   .actions(self => ({
-    addFigure(figureType: string, width = 150, height = 150) {
+    addFigure(figureType: EFigureType, width = 150, height = 150) {
       const newFigure = {
         id: shortid(),
         type: figureType,
