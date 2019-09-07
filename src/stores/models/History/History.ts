@@ -1,11 +1,11 @@
 import {
   applySnapshot,
+  getRoot,
   getSnapshot,
   SnapshotOut,
   types,
 } from 'mobx-state-tree';
 import { CanvasStore } from '../Canvas/Canvas';
-import { store } from '../index';
 
 const HistoryModel = types.model(CanvasStore.properties);
 
@@ -38,10 +38,11 @@ export const HistoryStore = types
     changeIndexBy(indexChange: number) {
       const targetSnapIndex = self.activeSnapIndex + indexChange;
       const prevSnap = self.snapShots[targetSnapIndex];
+      const rootStore = getRoot(self);
 
       if (prevSnap) {
         self.activeSnapIndex = targetSnapIndex;
-        applySnapshot(store.canvas, getSnapshot(prevSnap));
+        applySnapshot(rootStore.canvas, getSnapshot(prevSnap));
       }
     },
   }));

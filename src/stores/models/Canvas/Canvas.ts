@@ -18,7 +18,7 @@ export const CanvasStore = types
     figures: types.array(Figure),
     selectedFigureId: types.maybeNull(types.string),
     width: types.optional(types.number, 800),
-    height: types.optional(types.number, 800),
+    height: types.optional(types.number, 600),
     isDragging: types.optional(types.boolean, false),
     resizingType: types.optional(
       types.enumeration(Object.values(EResizeType)),

@@ -2,8 +2,8 @@ import classNames from 'classnames';
 import { useStore } from 'hooks/useStore';
 import { observer } from 'mobx-react-lite';
 import React, { MouseEvent, useMemo } from 'react';
-import { IFigure } from 'stores/Canvas/Canvas';
-import { EResizeType } from 'stores/Canvas/canvas.types';
+import { IFigure } from 'stores/models/Canvas/Canvas';
+import { EResizeType } from 'stores/models/Canvas/canvas.types';
 import { figuresList } from '../../../svg';
 import './Figure.scss';
 

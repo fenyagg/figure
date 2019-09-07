@@ -1,8 +1,8 @@
-import { getPath, getSnapshot, onAction, types } from 'mobx-state-tree';
+import { onAction, types } from 'mobx-state-tree';
 import React from 'react';
-import { CanvasStore } from './Canvas/Canvas';
-import { EResizeType } from './Canvas/canvas.types';
-import { HistoryStore } from './History/History';
+import { onCanvasAction } from './actionHandlers/onCanvasAction';
+import { CanvasStore } from './models/Canvas/Canvas';
+import { HistoryStore } from './models/History/History';
 
 export const model = types.model({
   canvas: CanvasStore,
@@ -22,24 +22,9 @@ export const store = model.create({
   },
 });
 
-export type IStore = typeof store;
-
 // watch canvas actions
-onAction(
-  store,
-  call => {
-    if (getPath(store.canvas) === call.path) {
-      const canvasSnap = getSnapshot(store.canvas);
-      // don't save snapshots when dragging and resizing (too match)
-      if (
-        !canvasSnap.isDragging &&
-        canvasSnap.resizingType === EResizeType.DISABLE
-      ) {
-        store.history.addSnapShot(canvasSnap);
-      }
-    }
-  },
-  true
-);
+onAction(store.canvas, onCanvasAction, true);
+
+export type IStore = typeof store;
 
 export const StoreContext = React.createContext(store);
