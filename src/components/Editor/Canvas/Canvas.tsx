@@ -12,7 +12,7 @@ const Canvas = () => {
       e.currentTarget === canvasRef.current &&
       context.canvas.selectedFigureId
     ) {
-      context.canvas.setActiveFigure(null);
+      context.canvas.selectFigure(null);
     }
   };
   const onMouseLeave = (e: MouseEvent) => {

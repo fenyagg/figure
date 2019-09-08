@@ -39,7 +39,7 @@ const Figure: React.FC<IProps> = ({ figure }) => {
 
   const onFigureClick = () => {
     if (!isActive) {
-      context.canvas.setActiveFigure(figure.id);
+      context.canvas.selectFigure(figure.id);
     }
   };
   const onFigureMouseDown = (e: MouseEvent) => {

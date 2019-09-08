@@ -14,10 +14,10 @@ const Editor = () => {
 
   const onMouseMove = (e: MouseEvent) => {
     if (context.canvas.isDragging) {
-      context.canvas.moveFigure(e.movementX, e.movementY);
+      context.canvas.moveSelectedFigure(e.movementX, e.movementY);
     }
     if (context.canvas.isResizing) {
-      context.canvas.resizeFigure(e.movementX, e.movementY);
+      context.canvas.resizeSelectedFigure(e.movementX, e.movementY);
     }
   };
   const disableActions = (e: MouseEvent) => {
@@ -35,10 +35,10 @@ const Editor = () => {
     const onKeyDown = (e: KeyboardEvent) => {
       if (context.canvas.selectedFigureId) {
         if (e.key === 'Delete') {
-          context.canvas.deleteActiveFigure();
+          context.canvas.deleteSelectedFigure();
         }
         if (e.key === 'Escape') {
-          context.canvas.setActiveFigure(null);
+          context.canvas.selectFigure(null);
         }
       }
     };

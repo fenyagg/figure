@@ -42,15 +42,15 @@ export const CanvasStore = types
         top: self.height / 2 - height / 2,
       };
       self.figures.push(newFigure);
-      this.setActiveFigure(newFigure.id);
+      self.selectedFigureId = newFigure.id;
       return newFigure;
     },
 
-    setActiveFigure(figureId: string | null) {
+    selectFigure(figureId: string | null) {
       self.selectedFigureId = figureId;
     },
 
-    moveFigure(changeX: number, changeY: number) {
+    moveSelectedFigure(changeX: number, changeY: number) {
       const figure: IFigure | undefined = self.figures.find(
         figureItem => figureItem.id === self.selectedFigureId
       );
@@ -78,12 +78,13 @@ export const CanvasStore = types
       figure.top = nextPositionTop;
     },
 
-    deleteActiveFigure() {
+    deleteSelectedFigure() {
       const activeFigure = self.figures.find(
         figure => figure.id === self.selectedFigureId
       );
       if (activeFigure) {
         destroy(activeFigure);
+        self.selectedFigureId = null;
       }
     },
 
@@ -99,7 +100,7 @@ export const CanvasStore = types
       self.resizingType = EResizeType.DISABLE;
     },
 
-    resizeFigure(changeX: number, changeY: number) {
+    resizeSelectedFigure(changeX: number, changeY: number) {
       const figure: IFigure | undefined = self.figures.find(
         figureItem => figureItem.id === self.selectedFigureId
       );
@@ -134,6 +135,8 @@ export const CanvasStore = types
           figureChanges.width += changeX;
           figureChanges.height += changeY;
           break;
+        case EResizeType.DISABLE:
+          return;
       }
       // save figure in canvas and save min size
       if (
