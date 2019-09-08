@@ -1,0 +1,654 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`snap 1`] = `
+initialize {
+  "0": Object {
+    "attribs": Object {
+      "class": "figure",
+      "style": "width:0;height:0;transform:translate3d(
+          0px,
+          0px,
+          0
+        )",
+    },
+    "children": Array [
+      Object {
+        "attribs": Object {
+          "class": "figure__dot _left-top",
+        },
+        "children": Array [],
+        "name": "div",
+        "namespace": "http://www.w3.org/1999/xhtml",
+        "next": Object {
+          "attribs": Object {
+            "class": "figure__dot _left-bot",
+          },
+          "children": Array [],
+          "name": "div",
+          "namespace": "http://www.w3.org/1999/xhtml",
+          "next": Object {
+            "attribs": Object {
+              "class": "figure__dot _right-top",
+            },
+            "children": Array [],
+            "name": "div",
+            "namespace": "http://www.w3.org/1999/xhtml",
+            "next": Object {
+              "attribs": Object {
+                "class": "figure__dot _right-bot",
+              },
+              "children": Array [],
+              "name": "div",
+              "namespace": "http://www.w3.org/1999/xhtml",
+              "next": Object {
+                "attribs": Object {
+                  "class": "figure__img",
+                  "preserveAspectRatio": "none",
+                  "viewBox": "-1 -1 32 32",
+                },
+                "children": Array [
+                  Object {
+                    "attribs": Object {
+                      "cx": "15",
+                      "cy": "15",
+                      "rx": "15",
+                      "ry": "15",
+                    },
+                    "children": Array [],
+                    "name": "ellipse",
+                    "namespace": "http://www.w3.org/2000/svg",
+                    "next": null,
+                    "parent": [Circular],
+                    "prev": null,
+                    "type": "tag",
+                    "x-attribsNamespace": Object {
+                      "cx": undefined,
+                      "cy": undefined,
+                      "rx": undefined,
+                      "ry": undefined,
+                    },
+                    "x-attribsPrefix": Object {
+                      "cx": undefined,
+                      "cy": undefined,
+                      "rx": undefined,
+                      "ry": undefined,
+                    },
+                  },
+                ],
+                "name": "svg",
+                "namespace": "http://www.w3.org/2000/svg",
+                "next": null,
+                "parent": [Circular],
+                "prev": [Circular],
+                "type": "tag",
+                "x-attribsNamespace": Object {
+                  "class": undefined,
+                  "preserveAspectRatio": undefined,
+                  "viewBox": undefined,
+                },
+                "x-attribsPrefix": Object {
+                  "class": undefined,
+                  "preserveAspectRatio": undefined,
+                  "viewBox": undefined,
+                },
+              },
+              "parent": [Circular],
+              "prev": [Circular],
+              "type": "tag",
+              "x-attribsNamespace": Object {
+                "class": undefined,
+              },
+              "x-attribsPrefix": Object {
+                "class": undefined,
+              },
+            },
+            "parent": [Circular],
+            "prev": [Circular],
+            "type": "tag",
+            "x-attribsNamespace": Object {
+              "class": undefined,
+            },
+            "x-attribsPrefix": Object {
+              "class": undefined,
+            },
+          },
+          "parent": [Circular],
+          "prev": [Circular],
+          "type": "tag",
+          "x-attribsNamespace": Object {
+            "class": undefined,
+          },
+          "x-attribsPrefix": Object {
+            "class": undefined,
+          },
+        },
+        "parent": [Circular],
+        "prev": null,
+        "type": "tag",
+        "x-attribsNamespace": Object {
+          "class": undefined,
+        },
+        "x-attribsPrefix": Object {
+          "class": undefined,
+        },
+      },
+      Object {
+        "attribs": Object {
+          "class": "figure__dot _left-bot",
+        },
+        "children": Array [],
+        "name": "div",
+        "namespace": "http://www.w3.org/1999/xhtml",
+        "next": Object {
+          "attribs": Object {
+            "class": "figure__dot _right-top",
+          },
+          "children": Array [],
+          "name": "div",
+          "namespace": "http://www.w3.org/1999/xhtml",
+          "next": Object {
+            "attribs": Object {
+              "class": "figure__dot _right-bot",
+            },
+            "children": Array [],
+            "name": "div",
+            "namespace": "http://www.w3.org/1999/xhtml",
+            "next": Object {
+              "attribs": Object {
+                "class": "figure__img",
+                "preserveAspectRatio": "none",
+                "viewBox": "-1 -1 32 32",
+              },
+              "children": Array [
+                Object {
+                  "attribs": Object {
+                    "cx": "15",
+                    "cy": "15",
+                    "rx": "15",
+                    "ry": "15",
+                  },
+                  "children": Array [],
+                  "name": "ellipse",
+                  "namespace": "http://www.w3.org/2000/svg",
+                  "next": null,
+                  "parent": [Circular],
+                  "prev": null,
+                  "type": "tag",
+                  "x-attribsNamespace": Object {
+                    "cx": undefined,
+                    "cy": undefined,
+                    "rx": undefined,
+                    "ry": undefined,
+                  },
+                  "x-attribsPrefix": Object {
+                    "cx": undefined,
+                    "cy": undefined,
+                    "rx": undefined,
+                    "ry": undefined,
+                  },
+                },
+              ],
+              "name": "svg",
+              "namespace": "http://www.w3.org/2000/svg",
+              "next": null,
+              "parent": [Circular],
+              "prev": [Circular],
+              "type": "tag",
+              "x-attribsNamespace": Object {
+                "class": undefined,
+                "preserveAspectRatio": undefined,
+                "viewBox": undefined,
+              },
+              "x-attribsPrefix": Object {
+                "class": undefined,
+                "preserveAspectRatio": undefined,
+                "viewBox": undefined,
+              },
+            },
+            "parent": [Circular],
+            "prev": [Circular],
+            "type": "tag",
+            "x-attribsNamespace": Object {
+              "class": undefined,
+            },
+            "x-attribsPrefix": Object {
+              "class": undefined,
+            },
+          },
+          "parent": [Circular],
+          "prev": [Circular],
+          "type": "tag",
+          "x-attribsNamespace": Object {
+            "class": undefined,
+          },
+          "x-attribsPrefix": Object {
+            "class": undefined,
+          },
+        },
+        "parent": [Circular],
+        "prev": Object {
+          "attribs": Object {
+            "class": "figure__dot _left-top",
+          },
+          "children": Array [],
+          "name": "div",
+          "namespace": "http://www.w3.org/1999/xhtml",
+          "next": [Circular],
+          "parent": [Circular],
+          "prev": null,
+          "type": "tag",
+          "x-attribsNamespace": Object {
+            "class": undefined,
+          },
+          "x-attribsPrefix": Object {
+            "class": undefined,
+          },
+        },
+        "type": "tag",
+        "x-attribsNamespace": Object {
+          "class": undefined,
+        },
+        "x-attribsPrefix": Object {
+          "class": undefined,
+        },
+      },
+      Object {
+        "attribs": Object {
+          "class": "figure__dot _right-top",
+        },
+        "children": Array [],
+        "name": "div",
+        "namespace": "http://www.w3.org/1999/xhtml",
+        "next": Object {
+          "attribs": Object {
+            "class": "figure__dot _right-bot",
+          },
+          "children": Array [],
+          "name": "div",
+          "namespace": "http://www.w3.org/1999/xhtml",
+          "next": Object {
+            "attribs": Object {
+              "class": "figure__img",
+              "preserveAspectRatio": "none",
+              "viewBox": "-1 -1 32 32",
+            },
+            "children": Array [
+              Object {
+                "attribs": Object {
+                  "cx": "15",
+                  "cy": "15",
+                  "rx": "15",
+                  "ry": "15",
+                },
+                "children": Array [],
+                "name": "ellipse",
+                "namespace": "http://www.w3.org/2000/svg",
+                "next": null,
+                "parent": [Circular],
+                "prev": null,
+                "type": "tag",
+                "x-attribsNamespace": Object {
+                  "cx": undefined,
+                  "cy": undefined,
+                  "rx": undefined,
+                  "ry": undefined,
+                },
+                "x-attribsPrefix": Object {
+                  "cx": undefined,
+                  "cy": undefined,
+                  "rx": undefined,
+                  "ry": undefined,
+                },
+              },
+            ],
+            "name": "svg",
+            "namespace": "http://www.w3.org/2000/svg",
+            "next": null,
+            "parent": [Circular],
+            "prev": [Circular],
+            "type": "tag",
+            "x-attribsNamespace": Object {
+              "class": undefined,
+              "preserveAspectRatio": undefined,
+              "viewBox": undefined,
+            },
+            "x-attribsPrefix": Object {
+              "class": undefined,
+              "preserveAspectRatio": undefined,
+              "viewBox": undefined,
+            },
+          },
+          "parent": [Circular],
+          "prev": [Circular],
+          "type": "tag",
+          "x-attribsNamespace": Object {
+            "class": undefined,
+          },
+          "x-attribsPrefix": Object {
+            "class": undefined,
+          },
+        },
+        "parent": [Circular],
+        "prev": Object {
+          "attribs": Object {
+            "class": "figure__dot _left-bot",
+          },
+          "children": Array [],
+          "name": "div",
+          "namespace": "http://www.w3.org/1999/xhtml",
+          "next": [Circular],
+          "parent": [Circular],
+          "prev": Object {
+            "attribs": Object {
+              "class": "figure__dot _left-top",
+            },
+            "children": Array [],
+            "name": "div",
+            "namespace": "http://www.w3.org/1999/xhtml",
+            "next": [Circular],
+            "parent": [Circular],
+            "prev": null,
+            "type": "tag",
+            "x-attribsNamespace": Object {
+              "class": undefined,
+            },
+            "x-attribsPrefix": Object {
+              "class": undefined,
+            },
+          },
+          "type": "tag",
+          "x-attribsNamespace": Object {
+            "class": undefined,
+          },
+          "x-attribsPrefix": Object {
+            "class": undefined,
+          },
+        },
+        "type": "tag",
+        "x-attribsNamespace": Object {
+          "class": undefined,
+        },
+        "x-attribsPrefix": Object {
+          "class": undefined,
+        },
+      },
+      Object {
+        "attribs": Object {
+          "class": "figure__dot _right-bot",
+        },
+        "children": Array [],
+        "name": "div",
+        "namespace": "http://www.w3.org/1999/xhtml",
+        "next": Object {
+          "attribs": Object {
+            "class": "figure__img",
+            "preserveAspectRatio": "none",
+            "viewBox": "-1 -1 32 32",
+          },
+          "children": Array [
+            Object {
+              "attribs": Object {
+                "cx": "15",
+                "cy": "15",
+                "rx": "15",
+                "ry": "15",
+              },
+              "children": Array [],
+              "name": "ellipse",
+              "namespace": "http://www.w3.org/2000/svg",
+              "next": null,
+              "parent": [Circular],
+              "prev": null,
+              "type": "tag",
+              "x-attribsNamespace": Object {
+                "cx": undefined,
+                "cy": undefined,
+                "rx": undefined,
+                "ry": undefined,
+              },
+              "x-attribsPrefix": Object {
+                "cx": undefined,
+                "cy": undefined,
+                "rx": undefined,
+                "ry": undefined,
+              },
+            },
+          ],
+          "name": "svg",
+          "namespace": "http://www.w3.org/2000/svg",
+          "next": null,
+          "parent": [Circular],
+          "prev": [Circular],
+          "type": "tag",
+          "x-attribsNamespace": Object {
+            "class": undefined,
+            "preserveAspectRatio": undefined,
+            "viewBox": undefined,
+          },
+          "x-attribsPrefix": Object {
+            "class": undefined,
+            "preserveAspectRatio": undefined,
+            "viewBox": undefined,
+          },
+        },
+        "parent": [Circular],
+        "prev": Object {
+          "attribs": Object {
+            "class": "figure__dot _right-top",
+          },
+          "children": Array [],
+          "name": "div",
+          "namespace": "http://www.w3.org/1999/xhtml",
+          "next": [Circular],
+          "parent": [Circular],
+          "prev": Object {
+            "attribs": Object {
+              "class": "figure__dot _left-bot",
+            },
+            "children": Array [],
+            "name": "div",
+            "namespace": "http://www.w3.org/1999/xhtml",
+            "next": [Circular],
+            "parent": [Circular],
+            "prev": Object {
+              "attribs": Object {
+                "class": "figure__dot _left-top",
+              },
+              "children": Array [],
+              "name": "div",
+              "namespace": "http://www.w3.org/1999/xhtml",
+              "next": [Circular],
+              "parent": [Circular],
+              "prev": null,
+              "type": "tag",
+              "x-attribsNamespace": Object {
+                "class": undefined,
+              },
+              "x-attribsPrefix": Object {
+                "class": undefined,
+              },
+            },
+            "type": "tag",
+            "x-attribsNamespace": Object {
+              "class": undefined,
+            },
+            "x-attribsPrefix": Object {
+              "class": undefined,
+            },
+          },
+          "type": "tag",
+          "x-attribsNamespace": Object {
+            "class": undefined,
+          },
+          "x-attribsPrefix": Object {
+            "class": undefined,
+          },
+        },
+        "type": "tag",
+        "x-attribsNamespace": Object {
+          "class": undefined,
+        },
+        "x-attribsPrefix": Object {
+          "class": undefined,
+        },
+      },
+      Object {
+        "attribs": Object {
+          "class": "figure__img",
+          "preserveAspectRatio": "none",
+          "viewBox": "-1 -1 32 32",
+        },
+        "children": Array [
+          Object {
+            "attribs": Object {
+              "cx": "15",
+              "cy": "15",
+              "rx": "15",
+              "ry": "15",
+            },
+            "children": Array [],
+            "name": "ellipse",
+            "namespace": "http://www.w3.org/2000/svg",
+            "next": null,
+            "parent": [Circular],
+            "prev": null,
+            "type": "tag",
+            "x-attribsNamespace": Object {
+              "cx": undefined,
+              "cy": undefined,
+              "rx": undefined,
+              "ry": undefined,
+            },
+            "x-attribsPrefix": Object {
+              "cx": undefined,
+              "cy": undefined,
+              "rx": undefined,
+              "ry": undefined,
+            },
+          },
+        ],
+        "name": "svg",
+        "namespace": "http://www.w3.org/2000/svg",
+        "next": null,
+        "parent": [Circular],
+        "prev": Object {
+          "attribs": Object {
+            "class": "figure__dot _right-bot",
+          },
+          "children": Array [],
+          "name": "div",
+          "namespace": "http://www.w3.org/1999/xhtml",
+          "next": [Circular],
+          "parent": [Circular],
+          "prev": Object {
+            "attribs": Object {
+              "class": "figure__dot _right-top",
+            },
+            "children": Array [],
+            "name": "div",
+            "namespace": "http://www.w3.org/1999/xhtml",
+            "next": [Circular],
+            "parent": [Circular],
+            "prev": Object {
+              "attribs": Object {
+                "class": "figure__dot _left-bot",
+              },
+              "children": Array [],
+              "name": "div",
+              "namespace": "http://www.w3.org/1999/xhtml",
+              "next": [Circular],
+              "parent": [Circular],
+              "prev": Object {
+                "attribs": Object {
+                  "class": "figure__dot _left-top",
+                },
+                "children": Array [],
+                "name": "div",
+                "namespace": "http://www.w3.org/1999/xhtml",
+                "next": [Circular],
+                "parent": [Circular],
+                "prev": null,
+                "type": "tag",
+                "x-attribsNamespace": Object {
+                  "class": undefined,
+                },
+                "x-attribsPrefix": Object {
+                  "class": undefined,
+                },
+              },
+              "type": "tag",
+              "x-attribsNamespace": Object {
+                "class": undefined,
+              },
+              "x-attribsPrefix": Object {
+                "class": undefined,
+              },
+            },
+            "type": "tag",
+            "x-attribsNamespace": Object {
+              "class": undefined,
+            },
+            "x-attribsPrefix": Object {
+              "class": undefined,
+            },
+          },
+          "type": "tag",
+          "x-attribsNamespace": Object {
+            "class": undefined,
+          },
+          "x-attribsPrefix": Object {
+            "class": undefined,
+          },
+        },
+        "type": "tag",
+        "x-attribsNamespace": Object {
+          "class": undefined,
+          "preserveAspectRatio": undefined,
+          "viewBox": undefined,
+        },
+        "x-attribsPrefix": Object {
+          "class": undefined,
+          "preserveAspectRatio": undefined,
+          "viewBox": undefined,
+        },
+      },
+    ],
+    "name": "div",
+    "namespace": "http://www.w3.org/1999/xhtml",
+    "next": null,
+    "parent": null,
+    "prev": null,
+    "root": Object {
+      "attribs": Object {},
+      "children": Array [
+        [Circular],
+      ],
+      "name": "root",
+      "namespace": "http://www.w3.org/1999/xhtml",
+      "next": null,
+      "parent": null,
+      "prev": null,
+      "type": "root",
+      "x-attribsNamespace": Object {},
+      "x-attribsPrefix": Object {},
+    },
+    "type": "tag",
+    "x-attribsNamespace": Object {
+      "class": undefined,
+      "style": undefined,
+    },
+    "x-attribsPrefix": Object {
+      "class": undefined,
+      "style": undefined,
+    },
+  },
+  "_root": [Circular],
+  "length": 1,
+  "options": Object {
+    "decodeEntities": true,
+    "normalizeWhitespace": false,
+    "withDomLvl1": true,
+    "xml": false,
+  },
+}
+`;

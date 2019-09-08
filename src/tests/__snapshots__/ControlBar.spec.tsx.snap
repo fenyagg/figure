@@ -1,0 +1,1105 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`snap 1`] = `
+initialize {
+  "0": Object {
+    "attribs": Object {
+      "class": "control-bar",
+    },
+    "children": Array [
+      Object {
+        "attribs": Object {
+          "class": "control-bar__figures-list",
+        },
+        "children": Array [
+          Object {
+            "attribs": Object {
+              "class": "control-bar__figure",
+              "viewBox": "-1 -1 32 32",
+            },
+            "children": Array [
+              Object {
+                "attribs": Object {
+                  "cx": "15",
+                  "cy": "15",
+                  "rx": "15",
+                  "ry": "15",
+                },
+                "children": Array [],
+                "name": "ellipse",
+                "namespace": "http://www.w3.org/2000/svg",
+                "next": null,
+                "parent": [Circular],
+                "prev": null,
+                "type": "tag",
+                "x-attribsNamespace": Object {
+                  "cx": undefined,
+                  "cy": undefined,
+                  "rx": undefined,
+                  "ry": undefined,
+                },
+                "x-attribsPrefix": Object {
+                  "cx": undefined,
+                  "cy": undefined,
+                  "rx": undefined,
+                  "ry": undefined,
+                },
+              },
+            ],
+            "name": "svg",
+            "namespace": "http://www.w3.org/2000/svg",
+            "next": Object {
+              "attribs": Object {
+                "class": "control-bar__figure",
+                "viewBox": "-1 -1 32 32",
+              },
+              "children": Array [
+                Object {
+                  "attribs": Object {
+                    "height": "30",
+                    "width": "30",
+                  },
+                  "children": Array [],
+                  "name": "rect",
+                  "namespace": "http://www.w3.org/2000/svg",
+                  "next": null,
+                  "parent": [Circular],
+                  "prev": null,
+                  "type": "tag",
+                  "x-attribsNamespace": Object {
+                    "height": undefined,
+                    "width": undefined,
+                  },
+                  "x-attribsPrefix": Object {
+                    "height": undefined,
+                    "width": undefined,
+                  },
+                },
+              ],
+              "name": "svg",
+              "namespace": "http://www.w3.org/2000/svg",
+              "next": Object {
+                "attribs": Object {
+                  "class": "control-bar__figure",
+                  "viewBox": "-1 -1 32 32",
+                },
+                "children": Array [
+                  Object {
+                    "attribs": Object {
+                      "points": "15,0 00,30 30,30",
+                    },
+                    "children": Array [],
+                    "name": "polygon",
+                    "namespace": "http://www.w3.org/2000/svg",
+                    "next": null,
+                    "parent": [Circular],
+                    "prev": null,
+                    "type": "tag",
+                    "x-attribsNamespace": Object {
+                      "points": undefined,
+                    },
+                    "x-attribsPrefix": Object {
+                      "points": undefined,
+                    },
+                  },
+                ],
+                "name": "svg",
+                "namespace": "http://www.w3.org/2000/svg",
+                "next": null,
+                "parent": [Circular],
+                "prev": [Circular],
+                "type": "tag",
+                "x-attribsNamespace": Object {
+                  "class": undefined,
+                  "viewBox": undefined,
+                },
+                "x-attribsPrefix": Object {
+                  "class": undefined,
+                  "viewBox": undefined,
+                },
+              },
+              "parent": [Circular],
+              "prev": [Circular],
+              "type": "tag",
+              "x-attribsNamespace": Object {
+                "class": undefined,
+                "viewBox": undefined,
+              },
+              "x-attribsPrefix": Object {
+                "class": undefined,
+                "viewBox": undefined,
+              },
+            },
+            "parent": [Circular],
+            "prev": null,
+            "type": "tag",
+            "x-attribsNamespace": Object {
+              "class": undefined,
+              "viewBox": undefined,
+            },
+            "x-attribsPrefix": Object {
+              "class": undefined,
+              "viewBox": undefined,
+            },
+          },
+          Object {
+            "attribs": Object {
+              "class": "control-bar__figure",
+              "viewBox": "-1 -1 32 32",
+            },
+            "children": Array [
+              Object {
+                "attribs": Object {
+                  "height": "30",
+                  "width": "30",
+                },
+                "children": Array [],
+                "name": "rect",
+                "namespace": "http://www.w3.org/2000/svg",
+                "next": null,
+                "parent": [Circular],
+                "prev": null,
+                "type": "tag",
+                "x-attribsNamespace": Object {
+                  "height": undefined,
+                  "width": undefined,
+                },
+                "x-attribsPrefix": Object {
+                  "height": undefined,
+                  "width": undefined,
+                },
+              },
+            ],
+            "name": "svg",
+            "namespace": "http://www.w3.org/2000/svg",
+            "next": Object {
+              "attribs": Object {
+                "class": "control-bar__figure",
+                "viewBox": "-1 -1 32 32",
+              },
+              "children": Array [
+                Object {
+                  "attribs": Object {
+                    "points": "15,0 00,30 30,30",
+                  },
+                  "children": Array [],
+                  "name": "polygon",
+                  "namespace": "http://www.w3.org/2000/svg",
+                  "next": null,
+                  "parent": [Circular],
+                  "prev": null,
+                  "type": "tag",
+                  "x-attribsNamespace": Object {
+                    "points": undefined,
+                  },
+                  "x-attribsPrefix": Object {
+                    "points": undefined,
+                  },
+                },
+              ],
+              "name": "svg",
+              "namespace": "http://www.w3.org/2000/svg",
+              "next": null,
+              "parent": [Circular],
+              "prev": [Circular],
+              "type": "tag",
+              "x-attribsNamespace": Object {
+                "class": undefined,
+                "viewBox": undefined,
+              },
+              "x-attribsPrefix": Object {
+                "class": undefined,
+                "viewBox": undefined,
+              },
+            },
+            "parent": [Circular],
+            "prev": Object {
+              "attribs": Object {
+                "class": "control-bar__figure",
+                "viewBox": "-1 -1 32 32",
+              },
+              "children": Array [
+                Object {
+                  "attribs": Object {
+                    "cx": "15",
+                    "cy": "15",
+                    "rx": "15",
+                    "ry": "15",
+                  },
+                  "children": Array [],
+                  "name": "ellipse",
+                  "namespace": "http://www.w3.org/2000/svg",
+                  "next": null,
+                  "parent": [Circular],
+                  "prev": null,
+                  "type": "tag",
+                  "x-attribsNamespace": Object {
+                    "cx": undefined,
+                    "cy": undefined,
+                    "rx": undefined,
+                    "ry": undefined,
+                  },
+                  "x-attribsPrefix": Object {
+                    "cx": undefined,
+                    "cy": undefined,
+                    "rx": undefined,
+                    "ry": undefined,
+                  },
+                },
+              ],
+              "name": "svg",
+              "namespace": "http://www.w3.org/2000/svg",
+              "next": [Circular],
+              "parent": [Circular],
+              "prev": null,
+              "type": "tag",
+              "x-attribsNamespace": Object {
+                "class": undefined,
+                "viewBox": undefined,
+              },
+              "x-attribsPrefix": Object {
+                "class": undefined,
+                "viewBox": undefined,
+              },
+            },
+            "type": "tag",
+            "x-attribsNamespace": Object {
+              "class": undefined,
+              "viewBox": undefined,
+            },
+            "x-attribsPrefix": Object {
+              "class": undefined,
+              "viewBox": undefined,
+            },
+          },
+          Object {
+            "attribs": Object {
+              "class": "control-bar__figure",
+              "viewBox": "-1 -1 32 32",
+            },
+            "children": Array [
+              Object {
+                "attribs": Object {
+                  "points": "15,0 00,30 30,30",
+                },
+                "children": Array [],
+                "name": "polygon",
+                "namespace": "http://www.w3.org/2000/svg",
+                "next": null,
+                "parent": [Circular],
+                "prev": null,
+                "type": "tag",
+                "x-attribsNamespace": Object {
+                  "points": undefined,
+                },
+                "x-attribsPrefix": Object {
+                  "points": undefined,
+                },
+              },
+            ],
+            "name": "svg",
+            "namespace": "http://www.w3.org/2000/svg",
+            "next": null,
+            "parent": [Circular],
+            "prev": Object {
+              "attribs": Object {
+                "class": "control-bar__figure",
+                "viewBox": "-1 -1 32 32",
+              },
+              "children": Array [
+                Object {
+                  "attribs": Object {
+                    "height": "30",
+                    "width": "30",
+                  },
+                  "children": Array [],
+                  "name": "rect",
+                  "namespace": "http://www.w3.org/2000/svg",
+                  "next": null,
+                  "parent": [Circular],
+                  "prev": null,
+                  "type": "tag",
+                  "x-attribsNamespace": Object {
+                    "height": undefined,
+                    "width": undefined,
+                  },
+                  "x-attribsPrefix": Object {
+                    "height": undefined,
+                    "width": undefined,
+                  },
+                },
+              ],
+              "name": "svg",
+              "namespace": "http://www.w3.org/2000/svg",
+              "next": [Circular],
+              "parent": [Circular],
+              "prev": Object {
+                "attribs": Object {
+                  "class": "control-bar__figure",
+                  "viewBox": "-1 -1 32 32",
+                },
+                "children": Array [
+                  Object {
+                    "attribs": Object {
+                      "cx": "15",
+                      "cy": "15",
+                      "rx": "15",
+                      "ry": "15",
+                    },
+                    "children": Array [],
+                    "name": "ellipse",
+                    "namespace": "http://www.w3.org/2000/svg",
+                    "next": null,
+                    "parent": [Circular],
+                    "prev": null,
+                    "type": "tag",
+                    "x-attribsNamespace": Object {
+                      "cx": undefined,
+                      "cy": undefined,
+                      "rx": undefined,
+                      "ry": undefined,
+                    },
+                    "x-attribsPrefix": Object {
+                      "cx": undefined,
+                      "cy": undefined,
+                      "rx": undefined,
+                      "ry": undefined,
+                    },
+                  },
+                ],
+                "name": "svg",
+                "namespace": "http://www.w3.org/2000/svg",
+                "next": [Circular],
+                "parent": [Circular],
+                "prev": null,
+                "type": "tag",
+                "x-attribsNamespace": Object {
+                  "class": undefined,
+                  "viewBox": undefined,
+                },
+                "x-attribsPrefix": Object {
+                  "class": undefined,
+                  "viewBox": undefined,
+                },
+              },
+              "type": "tag",
+              "x-attribsNamespace": Object {
+                "class": undefined,
+                "viewBox": undefined,
+              },
+              "x-attribsPrefix": Object {
+                "class": undefined,
+                "viewBox": undefined,
+              },
+            },
+            "type": "tag",
+            "x-attribsNamespace": Object {
+              "class": undefined,
+              "viewBox": undefined,
+            },
+            "x-attribsPrefix": Object {
+              "class": undefined,
+              "viewBox": undefined,
+            },
+          },
+        ],
+        "name": "div",
+        "namespace": "http://www.w3.org/1999/xhtml",
+        "next": Object {
+          "attribs": Object {
+            "class": "control-bar__nav",
+          },
+          "children": Array [
+            Object {
+              "attribs": Object {
+                "class": "control-bar__nav-link _disabled",
+              },
+              "children": Array [
+                Object {
+                  "data": "← prev",
+                  "next": null,
+                  "parent": [Circular],
+                  "prev": null,
+                  "type": "text",
+                },
+              ],
+              "name": "div",
+              "namespace": "http://www.w3.org/1999/xhtml",
+              "next": Object {
+                "attribs": Object {
+                  "class": "control-bar__nav-link _disabled",
+                },
+                "children": Array [
+                  Object {
+                    "data": "next →",
+                    "next": null,
+                    "parent": [Circular],
+                    "prev": null,
+                    "type": "text",
+                  },
+                ],
+                "name": "div",
+                "namespace": "http://www.w3.org/1999/xhtml",
+                "next": null,
+                "parent": [Circular],
+                "prev": [Circular],
+                "type": "tag",
+                "x-attribsNamespace": Object {
+                  "class": undefined,
+                },
+                "x-attribsPrefix": Object {
+                  "class": undefined,
+                },
+              },
+              "parent": [Circular],
+              "prev": null,
+              "type": "tag",
+              "x-attribsNamespace": Object {
+                "class": undefined,
+              },
+              "x-attribsPrefix": Object {
+                "class": undefined,
+              },
+            },
+            Object {
+              "attribs": Object {
+                "class": "control-bar__nav-link _disabled",
+              },
+              "children": Array [
+                Object {
+                  "data": "next →",
+                  "next": null,
+                  "parent": [Circular],
+                  "prev": null,
+                  "type": "text",
+                },
+              ],
+              "name": "div",
+              "namespace": "http://www.w3.org/1999/xhtml",
+              "next": null,
+              "parent": [Circular],
+              "prev": Object {
+                "attribs": Object {
+                  "class": "control-bar__nav-link _disabled",
+                },
+                "children": Array [
+                  Object {
+                    "data": "← prev",
+                    "next": null,
+                    "parent": [Circular],
+                    "prev": null,
+                    "type": "text",
+                  },
+                ],
+                "name": "div",
+                "namespace": "http://www.w3.org/1999/xhtml",
+                "next": [Circular],
+                "parent": [Circular],
+                "prev": null,
+                "type": "tag",
+                "x-attribsNamespace": Object {
+                  "class": undefined,
+                },
+                "x-attribsPrefix": Object {
+                  "class": undefined,
+                },
+              },
+              "type": "tag",
+              "x-attribsNamespace": Object {
+                "class": undefined,
+              },
+              "x-attribsPrefix": Object {
+                "class": undefined,
+              },
+            },
+          ],
+          "name": "div",
+          "namespace": "http://www.w3.org/1999/xhtml",
+          "next": null,
+          "parent": [Circular],
+          "prev": [Circular],
+          "type": "tag",
+          "x-attribsNamespace": Object {
+            "class": undefined,
+          },
+          "x-attribsPrefix": Object {
+            "class": undefined,
+          },
+        },
+        "parent": [Circular],
+        "prev": null,
+        "type": "tag",
+        "x-attribsNamespace": Object {
+          "class": undefined,
+        },
+        "x-attribsPrefix": Object {
+          "class": undefined,
+        },
+      },
+      Object {
+        "attribs": Object {
+          "class": "control-bar__nav",
+        },
+        "children": Array [
+          Object {
+            "attribs": Object {
+              "class": "control-bar__nav-link _disabled",
+            },
+            "children": Array [
+              Object {
+                "data": "← prev",
+                "next": null,
+                "parent": [Circular],
+                "prev": null,
+                "type": "text",
+              },
+            ],
+            "name": "div",
+            "namespace": "http://www.w3.org/1999/xhtml",
+            "next": Object {
+              "attribs": Object {
+                "class": "control-bar__nav-link _disabled",
+              },
+              "children": Array [
+                Object {
+                  "data": "next →",
+                  "next": null,
+                  "parent": [Circular],
+                  "prev": null,
+                  "type": "text",
+                },
+              ],
+              "name": "div",
+              "namespace": "http://www.w3.org/1999/xhtml",
+              "next": null,
+              "parent": [Circular],
+              "prev": [Circular],
+              "type": "tag",
+              "x-attribsNamespace": Object {
+                "class": undefined,
+              },
+              "x-attribsPrefix": Object {
+                "class": undefined,
+              },
+            },
+            "parent": [Circular],
+            "prev": null,
+            "type": "tag",
+            "x-attribsNamespace": Object {
+              "class": undefined,
+            },
+            "x-attribsPrefix": Object {
+              "class": undefined,
+            },
+          },
+          Object {
+            "attribs": Object {
+              "class": "control-bar__nav-link _disabled",
+            },
+            "children": Array [
+              Object {
+                "data": "next →",
+                "next": null,
+                "parent": [Circular],
+                "prev": null,
+                "type": "text",
+              },
+            ],
+            "name": "div",
+            "namespace": "http://www.w3.org/1999/xhtml",
+            "next": null,
+            "parent": [Circular],
+            "prev": Object {
+              "attribs": Object {
+                "class": "control-bar__nav-link _disabled",
+              },
+              "children": Array [
+                Object {
+                  "data": "← prev",
+                  "next": null,
+                  "parent": [Circular],
+                  "prev": null,
+                  "type": "text",
+                },
+              ],
+              "name": "div",
+              "namespace": "http://www.w3.org/1999/xhtml",
+              "next": [Circular],
+              "parent": [Circular],
+              "prev": null,
+              "type": "tag",
+              "x-attribsNamespace": Object {
+                "class": undefined,
+              },
+              "x-attribsPrefix": Object {
+                "class": undefined,
+              },
+            },
+            "type": "tag",
+            "x-attribsNamespace": Object {
+              "class": undefined,
+            },
+            "x-attribsPrefix": Object {
+              "class": undefined,
+            },
+          },
+        ],
+        "name": "div",
+        "namespace": "http://www.w3.org/1999/xhtml",
+        "next": null,
+        "parent": [Circular],
+        "prev": Object {
+          "attribs": Object {
+            "class": "control-bar__figures-list",
+          },
+          "children": Array [
+            Object {
+              "attribs": Object {
+                "class": "control-bar__figure",
+                "viewBox": "-1 -1 32 32",
+              },
+              "children": Array [
+                Object {
+                  "attribs": Object {
+                    "cx": "15",
+                    "cy": "15",
+                    "rx": "15",
+                    "ry": "15",
+                  },
+                  "children": Array [],
+                  "name": "ellipse",
+                  "namespace": "http://www.w3.org/2000/svg",
+                  "next": null,
+                  "parent": [Circular],
+                  "prev": null,
+                  "type": "tag",
+                  "x-attribsNamespace": Object {
+                    "cx": undefined,
+                    "cy": undefined,
+                    "rx": undefined,
+                    "ry": undefined,
+                  },
+                  "x-attribsPrefix": Object {
+                    "cx": undefined,
+                    "cy": undefined,
+                    "rx": undefined,
+                    "ry": undefined,
+                  },
+                },
+              ],
+              "name": "svg",
+              "namespace": "http://www.w3.org/2000/svg",
+              "next": Object {
+                "attribs": Object {
+                  "class": "control-bar__figure",
+                  "viewBox": "-1 -1 32 32",
+                },
+                "children": Array [
+                  Object {
+                    "attribs": Object {
+                      "height": "30",
+                      "width": "30",
+                    },
+                    "children": Array [],
+                    "name": "rect",
+                    "namespace": "http://www.w3.org/2000/svg",
+                    "next": null,
+                    "parent": [Circular],
+                    "prev": null,
+                    "type": "tag",
+                    "x-attribsNamespace": Object {
+                      "height": undefined,
+                      "width": undefined,
+                    },
+                    "x-attribsPrefix": Object {
+                      "height": undefined,
+                      "width": undefined,
+                    },
+                  },
+                ],
+                "name": "svg",
+                "namespace": "http://www.w3.org/2000/svg",
+                "next": Object {
+                  "attribs": Object {
+                    "class": "control-bar__figure",
+                    "viewBox": "-1 -1 32 32",
+                  },
+                  "children": Array [
+                    Object {
+                      "attribs": Object {
+                        "points": "15,0 00,30 30,30",
+                      },
+                      "children": Array [],
+                      "name": "polygon",
+                      "namespace": "http://www.w3.org/2000/svg",
+                      "next": null,
+                      "parent": [Circular],
+                      "prev": null,
+                      "type": "tag",
+                      "x-attribsNamespace": Object {
+                        "points": undefined,
+                      },
+                      "x-attribsPrefix": Object {
+                        "points": undefined,
+                      },
+                    },
+                  ],
+                  "name": "svg",
+                  "namespace": "http://www.w3.org/2000/svg",
+                  "next": null,
+                  "parent": [Circular],
+                  "prev": [Circular],
+                  "type": "tag",
+                  "x-attribsNamespace": Object {
+                    "class": undefined,
+                    "viewBox": undefined,
+                  },
+                  "x-attribsPrefix": Object {
+                    "class": undefined,
+                    "viewBox": undefined,
+                  },
+                },
+                "parent": [Circular],
+                "prev": [Circular],
+                "type": "tag",
+                "x-attribsNamespace": Object {
+                  "class": undefined,
+                  "viewBox": undefined,
+                },
+                "x-attribsPrefix": Object {
+                  "class": undefined,
+                  "viewBox": undefined,
+                },
+              },
+              "parent": [Circular],
+              "prev": null,
+              "type": "tag",
+              "x-attribsNamespace": Object {
+                "class": undefined,
+                "viewBox": undefined,
+              },
+              "x-attribsPrefix": Object {
+                "class": undefined,
+                "viewBox": undefined,
+              },
+            },
+            Object {
+              "attribs": Object {
+                "class": "control-bar__figure",
+                "viewBox": "-1 -1 32 32",
+              },
+              "children": Array [
+                Object {
+                  "attribs": Object {
+                    "height": "30",
+                    "width": "30",
+                  },
+                  "children": Array [],
+                  "name": "rect",
+                  "namespace": "http://www.w3.org/2000/svg",
+                  "next": null,
+                  "parent": [Circular],
+                  "prev": null,
+                  "type": "tag",
+                  "x-attribsNamespace": Object {
+                    "height": undefined,
+                    "width": undefined,
+                  },
+                  "x-attribsPrefix": Object {
+                    "height": undefined,
+                    "width": undefined,
+                  },
+                },
+              ],
+              "name": "svg",
+              "namespace": "http://www.w3.org/2000/svg",
+              "next": Object {
+                "attribs": Object {
+                  "class": "control-bar__figure",
+                  "viewBox": "-1 -1 32 32",
+                },
+                "children": Array [
+                  Object {
+                    "attribs": Object {
+                      "points": "15,0 00,30 30,30",
+                    },
+                    "children": Array [],
+                    "name": "polygon",
+                    "namespace": "http://www.w3.org/2000/svg",
+                    "next": null,
+                    "parent": [Circular],
+                    "prev": null,
+                    "type": "tag",
+                    "x-attribsNamespace": Object {
+                      "points": undefined,
+                    },
+                    "x-attribsPrefix": Object {
+                      "points": undefined,
+                    },
+                  },
+                ],
+                "name": "svg",
+                "namespace": "http://www.w3.org/2000/svg",
+                "next": null,
+                "parent": [Circular],
+                "prev": [Circular],
+                "type": "tag",
+                "x-attribsNamespace": Object {
+                  "class": undefined,
+                  "viewBox": undefined,
+                },
+                "x-attribsPrefix": Object {
+                  "class": undefined,
+                  "viewBox": undefined,
+                },
+              },
+              "parent": [Circular],
+              "prev": Object {
+                "attribs": Object {
+                  "class": "control-bar__figure",
+                  "viewBox": "-1 -1 32 32",
+                },
+                "children": Array [
+                  Object {
+                    "attribs": Object {
+                      "cx": "15",
+                      "cy": "15",
+                      "rx": "15",
+                      "ry": "15",
+                    },
+                    "children": Array [],
+                    "name": "ellipse",
+                    "namespace": "http://www.w3.org/2000/svg",
+                    "next": null,
+                    "parent": [Circular],
+                    "prev": null,
+                    "type": "tag",
+                    "x-attribsNamespace": Object {
+                      "cx": undefined,
+                      "cy": undefined,
+                      "rx": undefined,
+                      "ry": undefined,
+                    },
+                    "x-attribsPrefix": Object {
+                      "cx": undefined,
+                      "cy": undefined,
+                      "rx": undefined,
+                      "ry": undefined,
+                    },
+                  },
+                ],
+                "name": "svg",
+                "namespace": "http://www.w3.org/2000/svg",
+                "next": [Circular],
+                "parent": [Circular],
+                "prev": null,
+                "type": "tag",
+                "x-attribsNamespace": Object {
+                  "class": undefined,
+                  "viewBox": undefined,
+                },
+                "x-attribsPrefix": Object {
+                  "class": undefined,
+                  "viewBox": undefined,
+                },
+              },
+              "type": "tag",
+              "x-attribsNamespace": Object {
+                "class": undefined,
+                "viewBox": undefined,
+              },
+              "x-attribsPrefix": Object {
+                "class": undefined,
+                "viewBox": undefined,
+              },
+            },
+            Object {
+              "attribs": Object {
+                "class": "control-bar__figure",
+                "viewBox": "-1 -1 32 32",
+              },
+              "children": Array [
+                Object {
+                  "attribs": Object {
+                    "points": "15,0 00,30 30,30",
+                  },
+                  "children": Array [],
+                  "name": "polygon",
+                  "namespace": "http://www.w3.org/2000/svg",
+                  "next": null,
+                  "parent": [Circular],
+                  "prev": null,
+                  "type": "tag",
+                  "x-attribsNamespace": Object {
+                    "points": undefined,
+                  },
+                  "x-attribsPrefix": Object {
+                    "points": undefined,
+                  },
+                },
+              ],
+              "name": "svg",
+              "namespace": "http://www.w3.org/2000/svg",
+              "next": null,
+              "parent": [Circular],
+              "prev": Object {
+                "attribs": Object {
+                  "class": "control-bar__figure",
+                  "viewBox": "-1 -1 32 32",
+                },
+                "children": Array [
+                  Object {
+                    "attribs": Object {
+                      "height": "30",
+                      "width": "30",
+                    },
+                    "children": Array [],
+                    "name": "rect",
+                    "namespace": "http://www.w3.org/2000/svg",
+                    "next": null,
+                    "parent": [Circular],
+                    "prev": null,
+                    "type": "tag",
+                    "x-attribsNamespace": Object {
+                      "height": undefined,
+                      "width": undefined,
+                    },
+                    "x-attribsPrefix": Object {
+                      "height": undefined,
+                      "width": undefined,
+                    },
+                  },
+                ],
+                "name": "svg",
+                "namespace": "http://www.w3.org/2000/svg",
+                "next": [Circular],
+                "parent": [Circular],
+                "prev": Object {
+                  "attribs": Object {
+                    "class": "control-bar__figure",
+                    "viewBox": "-1 -1 32 32",
+                  },
+                  "children": Array [
+                    Object {
+                      "attribs": Object {
+                        "cx": "15",
+                        "cy": "15",
+                        "rx": "15",
+                        "ry": "15",
+                      },
+                      "children": Array [],
+                      "name": "ellipse",
+                      "namespace": "http://www.w3.org/2000/svg",
+                      "next": null,
+                      "parent": [Circular],
+                      "prev": null,
+                      "type": "tag",
+                      "x-attribsNamespace": Object {
+                        "cx": undefined,
+                        "cy": undefined,
+                        "rx": undefined,
+                        "ry": undefined,
+                      },
+                      "x-attribsPrefix": Object {
+                        "cx": undefined,
+                        "cy": undefined,
+                        "rx": undefined,
+                        "ry": undefined,
+                      },
+                    },
+                  ],
+                  "name": "svg",
+                  "namespace": "http://www.w3.org/2000/svg",
+                  "next": [Circular],
+                  "parent": [Circular],
+                  "prev": null,
+                  "type": "tag",
+                  "x-attribsNamespace": Object {
+                    "class": undefined,
+                    "viewBox": undefined,
+                  },
+                  "x-attribsPrefix": Object {
+                    "class": undefined,
+                    "viewBox": undefined,
+                  },
+                },
+                "type": "tag",
+                "x-attribsNamespace": Object {
+                  "class": undefined,
+                  "viewBox": undefined,
+                },
+                "x-attribsPrefix": Object {
+                  "class": undefined,
+                  "viewBox": undefined,
+                },
+              },
+              "type": "tag",
+              "x-attribsNamespace": Object {
+                "class": undefined,
+                "viewBox": undefined,
+              },
+              "x-attribsPrefix": Object {
+                "class": undefined,
+                "viewBox": undefined,
+              },
+            },
+          ],
+          "name": "div",
+          "namespace": "http://www.w3.org/1999/xhtml",
+          "next": [Circular],
+          "parent": [Circular],
+          "prev": null,
+          "type": "tag",
+          "x-attribsNamespace": Object {
+            "class": undefined,
+          },
+          "x-attribsPrefix": Object {
+            "class": undefined,
+          },
+        },
+        "type": "tag",
+        "x-attribsNamespace": Object {
+          "class": undefined,
+        },
+        "x-attribsPrefix": Object {
+          "class": undefined,
+        },
+      },
+    ],
+    "name": "div",
+    "namespace": "http://www.w3.org/1999/xhtml",
+    "next": null,
+    "parent": null,
+    "prev": null,
+    "root": Object {
+      "attribs": Object {},
+      "children": Array [
+        [Circular],
+      ],
+      "name": "root",
+      "namespace": "http://www.w3.org/1999/xhtml",
+      "next": null,
+      "parent": null,
+      "prev": null,
+      "type": "root",
+      "x-attribsNamespace": Object {},
+      "x-attribsPrefix": Object {},
+    },
+    "type": "tag",
+    "x-attribsNamespace": Object {
+      "class": undefined,
+    },
+    "x-attribsPrefix": Object {
+      "class": undefined,
+    },
+  },
+  "_root": [Circular],
+  "length": 1,
+  "options": Object {
+    "decodeEntities": true,
+    "normalizeWhitespace": false,
+    "withDomLvl1": true,
+    "xml": false,
+  },
+}
+`;
