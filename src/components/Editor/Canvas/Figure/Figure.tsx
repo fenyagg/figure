@@ -1,10 +1,10 @@
 import classNames from 'classnames';
+import SvgFigure from 'components/SvgFigure/SvgFigure';
 import { useStore } from 'hooks/useStore';
 import { observer } from 'mobx-react-lite';
 import React, { MouseEvent, useMemo } from 'react';
 import { IFigure } from 'stores/models/Canvas/Canvas';
 import { EResizeType } from 'stores/models/Canvas/canvas.types';
-import { figuresList } from '../../../svg';
 import './Figure.scss';
 
 interface IProps {
@@ -57,7 +57,6 @@ const Figure: React.FC<IProps> = ({ figure }) => {
     }
   };
 
-  const FigureSvg = figuresList[figure.type];
   return (
     <div
       key={figure.id}
@@ -85,7 +84,11 @@ const Figure: React.FC<IProps> = ({ figure }) => {
         />
       ))}
 
-      <FigureSvg preserveAspectRatio="none" className="figure__img" />
+      <SvgFigure
+        type={figure.type}
+        preserveAspectRatio="none"
+        className="figure__img"
+      />
     </div>
   );
 };

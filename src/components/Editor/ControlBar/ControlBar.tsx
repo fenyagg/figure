@@ -1,5 +1,5 @@
 import classNames from 'classnames';
-import { figuresList } from 'components/svg';
+import SvgFigure from 'components/SvgFigure/SvgFigure';
 import { useStore } from 'hooks/useStore';
 import { observer } from 'mobx-react-lite';
 import React from 'react';
@@ -12,10 +12,10 @@ const ControlBar = () => {
     <div className="control-bar">
       <div className="control-bar__figures-list">
         {context.canvas.figureTypes.map(figureType => {
-          const Figure = figuresList[figureType];
           return (
-            <Figure
+            <SvgFigure
               key={figureType}
+              type={figureType}
               onClick={() => context.canvas.addFigure(figureType)}
               className="control-bar__figure"
             />
