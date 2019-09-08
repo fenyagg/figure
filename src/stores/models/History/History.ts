@@ -17,7 +17,7 @@ export const HistoryStore = types
   })
   .views(self => ({
     get canBack() {
-      return self.activeSnapIndex;
+      return !!self.activeSnapIndex;
     },
     get canForward() {
       return self.activeSnapIndex + 1 < self.snapShots.length;
@@ -40,14 +40,15 @@ export const HistoryStore = types
     },
     changeIndexBy(indexChange: number) {
       const targetSnapIndex = self.activeSnapIndex + indexChange;
-      const targetSnap = self.snapShots[targetSnapIndex];
       const rootStore = getRoot(self);
 
-      if (targetSnap) {
-        self.activeSnapIndex = targetSnapIndex;
-        applySnapshot(rootStore.canvas, getSnapshot(targetSnap));
-
-        canvasService.setValue(targetSnap);
+      if (targetSnapIndex + 1 > self.snapShots.length) {
+        return;
       }
+      const targetSnap = self.snapShots[targetSnapIndex];
+      self.activeSnapIndex = targetSnapIndex;
+      applySnapshot(rootStore.canvas, getSnapshot(targetSnap));
+
+      canvasService.setValue(targetSnap);
     },
   }));

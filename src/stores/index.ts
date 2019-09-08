@@ -5,7 +5,7 @@ import { onCanvasAction } from './actionHandlers/onCanvasAction';
 import { CanvasStore } from './models/Canvas/Canvas';
 import { HistoryStore } from './models/History/History';
 
-export const model = types.model({
+const model = types.model({
   canvas: CanvasStore,
   history: HistoryStore,
 });
