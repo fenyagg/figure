@@ -1,8 +1,8 @@
 import React from 'react';
 import { render } from 'enzyme';
-import Figure from '../components/Editor/Canvas/Figure/Figure';
-import { IFigure } from '../stores/models/Canvas/Canvas';
-import { EFigureType } from '../stores/models/Canvas/canvas.types';
+import { IFigure } from 'stores/models/Canvas/Canvas';
+import { EFigureType } from 'stores/models/Canvas/canvas.types';
+import Figure from './Figure';
 
 it('snap', () => {
   const figureItem: IFigure = {

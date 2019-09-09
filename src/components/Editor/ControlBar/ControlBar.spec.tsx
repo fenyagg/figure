@@ -1,6 +1,6 @@
 import React from 'react';
 import { render } from 'enzyme';
-import ControlBar from '../components/Editor/ControlBar/ControlBar';
+import ControlBar from './ControlBar';
 
 it('snap', () => {
   const component = render(<ControlBar />);

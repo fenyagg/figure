@@ -1,6 +1,6 @@
 import React from 'react';
 import { render } from 'enzyme';
-import Editor from '../components/Editor/Editor';
+import Editor from './Editor';
 
 it('snap', () => {
   const component = render(<Editor />);
