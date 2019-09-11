@@ -1,7 +1,7 @@
 import { useStore } from 'hooks/useStore';
 import { observer } from 'mobx-react-lite';
 import React, { MouseEvent, useRef } from 'react';
-import './Canvas.scss';
+import styles from './Canvas.module.css';
 import Figure from './Figure/Figure';
 
 const Canvas = () => {
@@ -23,7 +23,7 @@ const Canvas = () => {
 
   return (
     <div
-      className={'canvas'}
+      className={styles.canvas}
       style={{ width: context.canvas.width, height: context.canvas.height }}
       onMouseLeave={onMouseLeave}
       onMouseDown={onMouseDown}

@@ -3,31 +3,31 @@ import SvgFigure from 'components/SvgFigure/SvgFigure';
 import { useStore } from 'hooks/useStore';
 import { observer } from 'mobx-react-lite';
 import React from 'react';
-import './ControlBar.scss';
+import styles from './ControlBar.module.css';
 
 const ControlBar = () => {
   const context = useStore();
 
   return (
-    <div className="control-bar">
-      <div className="control-bar__figures-list">
+    <div className={styles.controlBar}>
+      <div className={styles.figureList}>
         {context.canvas.figureTypes.map(figureType => {
           return (
             <SvgFigure
               key={figureType}
               type={figureType}
               onClick={() => context.canvas.addFigure(figureType)}
-              className="control-bar__figure"
+              className={styles.figure}
             />
           );
         })}
       </div>
-      <div className="control-bar__nav">
+      <div className={styles.nav}>
         <div
           onClick={() => context.history.changeIndexBy(-1)}
           className={classNames({
-            'control-bar__nav-link': true,
-            _disabled: !context.history.canBack,
+            [styles.navLink]: true,
+            [styles.navLinkDisabled]: !context.history.canBack,
           })}
         >
           &larr; prev
@@ -35,8 +35,8 @@ const ControlBar = () => {
         <div
           onClick={() => context.history.changeIndexBy(1)}
           className={classNames({
-            'control-bar__nav-link': true,
-            _disabled: !context.history.canForward,
+            [styles.navLink]: true,
+            [styles.navLinkDisabled]: !context.history.canForward,
           })}
         >
           next &rarr;

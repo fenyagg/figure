@@ -4,17 +4,17 @@ exports[`snap 1`] = `
 initialize {
   "0": Object {
     "attribs": Object {
-      "class": "control-bar",
+      "class": "controlBar",
     },
     "children": Array [
       Object {
         "attribs": Object {
-          "class": "control-bar__figures-list",
+          "class": "figureList",
         },
         "children": Array [
           Object {
             "attribs": Object {
-              "class": "control-bar__figure",
+              "class": "figure",
               "viewBox": "-1 -1 32 32",
             },
             "children": Array [
@@ -50,7 +50,7 @@ initialize {
             "namespace": "http://www.w3.org/2000/svg",
             "next": Object {
               "attribs": Object {
-                "class": "control-bar__figure",
+                "class": "figure",
                 "viewBox": "-1 -1 32 32",
               },
               "children": Array [
@@ -80,7 +80,7 @@ initialize {
               "namespace": "http://www.w3.org/2000/svg",
               "next": Object {
                 "attribs": Object {
-                  "class": "control-bar__figure",
+                  "class": "figure",
                   "viewBox": "-1 -1 32 32",
                 },
                 "children": Array [
@@ -144,7 +144,7 @@ initialize {
           },
           Object {
             "attribs": Object {
-              "class": "control-bar__figure",
+              "class": "figure",
               "viewBox": "-1 -1 32 32",
             },
             "children": Array [
@@ -174,7 +174,7 @@ initialize {
             "namespace": "http://www.w3.org/2000/svg",
             "next": Object {
               "attribs": Object {
-                "class": "control-bar__figure",
+                "class": "figure",
                 "viewBox": "-1 -1 32 32",
               },
               "children": Array [
@@ -215,7 +215,7 @@ initialize {
             "parent": [Circular],
             "prev": Object {
               "attribs": Object {
-                "class": "control-bar__figure",
+                "class": "figure",
                 "viewBox": "-1 -1 32 32",
               },
               "children": Array [
@@ -274,7 +274,7 @@ initialize {
           },
           Object {
             "attribs": Object {
-              "class": "control-bar__figure",
+              "class": "figure",
               "viewBox": "-1 -1 32 32",
             },
             "children": Array [
@@ -303,7 +303,7 @@ initialize {
             "parent": [Circular],
             "prev": Object {
               "attribs": Object {
-                "class": "control-bar__figure",
+                "class": "figure",
                 "viewBox": "-1 -1 32 32",
               },
               "children": Array [
@@ -335,7 +335,7 @@ initialize {
               "parent": [Circular],
               "prev": Object {
                 "attribs": Object {
-                  "class": "control-bar__figure",
+                  "class": "figure",
                   "viewBox": "-1 -1 32 32",
                 },
                 "children": Array [
@@ -407,12 +407,12 @@ initialize {
         "namespace": "http://www.w3.org/1999/xhtml",
         "next": Object {
           "attribs": Object {
-            "class": "control-bar__nav",
+            "class": "nav",
           },
           "children": Array [
             Object {
               "attribs": Object {
-                "class": "control-bar__nav-link _disabled",
+                "class": "navLink navLinkDisabled",
               },
               "children": Array [
                 Object {
@@ -427,7 +427,7 @@ initialize {
               "namespace": "http://www.w3.org/1999/xhtml",
               "next": Object {
                 "attribs": Object {
-                  "class": "control-bar__nav-link _disabled",
+                  "class": "navLink navLinkDisabled",
                 },
                 "children": Array [
                   Object {
@@ -463,7 +463,7 @@ initialize {
             },
             Object {
               "attribs": Object {
-                "class": "control-bar__nav-link _disabled",
+                "class": "navLink navLinkDisabled",
               },
               "children": Array [
                 Object {
@@ -480,7 +480,7 @@ initialize {
               "parent": [Circular],
               "prev": Object {
                 "attribs": Object {
-                  "class": "control-bar__nav-link _disabled",
+                  "class": "navLink navLinkDisabled",
                 },
                 "children": Array [
                   Object {
@@ -538,12 +538,12 @@ initialize {
       },
       Object {
         "attribs": Object {
-          "class": "control-bar__nav",
+          "class": "nav",
         },
         "children": Array [
           Object {
             "attribs": Object {
-              "class": "control-bar__nav-link _disabled",
+              "class": "navLink navLinkDisabled",
             },
             "children": Array [
               Object {
@@ -558,7 +558,7 @@ initialize {
             "namespace": "http://www.w3.org/1999/xhtml",
             "next": Object {
               "attribs": Object {
-                "class": "control-bar__nav-link _disabled",
+                "class": "navLink navLinkDisabled",
               },
               "children": Array [
                 Object {
@@ -594,7 +594,7 @@ initialize {
           },
           Object {
             "attribs": Object {
-              "class": "control-bar__nav-link _disabled",
+              "class": "navLink navLinkDisabled",
             },
             "children": Array [
               Object {
@@ -611,7 +611,7 @@ initialize {
             "parent": [Circular],
             "prev": Object {
               "attribs": Object {
-                "class": "control-bar__nav-link _disabled",
+                "class": "navLink navLinkDisabled",
               },
               "children": Array [
                 Object {
@@ -650,12 +650,12 @@ initialize {
         "parent": [Circular],
         "prev": Object {
           "attribs": Object {
-            "class": "control-bar__figures-list",
+            "class": "figureList",
           },
           "children": Array [
             Object {
               "attribs": Object {
-                "class": "control-bar__figure",
+                "class": "figure",
                 "viewBox": "-1 -1 32 32",
               },
               "children": Array [
@@ -691,7 +691,7 @@ initialize {
               "namespace": "http://www.w3.org/2000/svg",
               "next": Object {
                 "attribs": Object {
-                  "class": "control-bar__figure",
+                  "class": "figure",
                   "viewBox": "-1 -1 32 32",
                 },
                 "children": Array [
@@ -721,7 +721,7 @@ initialize {
                 "namespace": "http://www.w3.org/2000/svg",
                 "next": Object {
                   "attribs": Object {
-                    "class": "control-bar__figure",
+                    "class": "figure",
                     "viewBox": "-1 -1 32 32",
                   },
                   "children": Array [
@@ -785,7 +785,7 @@ initialize {
             },
             Object {
               "attribs": Object {
-                "class": "control-bar__figure",
+                "class": "figure",
                 "viewBox": "-1 -1 32 32",
               },
               "children": Array [
@@ -815,7 +815,7 @@ initialize {
               "namespace": "http://www.w3.org/2000/svg",
               "next": Object {
                 "attribs": Object {
-                  "class": "control-bar__figure",
+                  "class": "figure",
                   "viewBox": "-1 -1 32 32",
                 },
                 "children": Array [
@@ -856,7 +856,7 @@ initialize {
               "parent": [Circular],
               "prev": Object {
                 "attribs": Object {
-                  "class": "control-bar__figure",
+                  "class": "figure",
                   "viewBox": "-1 -1 32 32",
                 },
                 "children": Array [
@@ -915,7 +915,7 @@ initialize {
             },
             Object {
               "attribs": Object {
-                "class": "control-bar__figure",
+                "class": "figure",
                 "viewBox": "-1 -1 32 32",
               },
               "children": Array [
@@ -944,7 +944,7 @@ initialize {
               "parent": [Circular],
               "prev": Object {
                 "attribs": Object {
-                  "class": "control-bar__figure",
+                  "class": "figure",
                   "viewBox": "-1 -1 32 32",
                 },
                 "children": Array [
@@ -976,7 +976,7 @@ initialize {
                 "parent": [Circular],
                 "prev": Object {
                   "attribs": Object {
-                    "class": "control-bar__figure",
+                    "class": "figure",
                     "viewBox": "-1 -1 32 32",
                   },
                   "children": Array [

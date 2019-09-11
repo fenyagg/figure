@@ -3,7 +3,7 @@ import { observer } from 'mobx-react-lite';
 import React, { MouseEvent, useEffect, useRef } from 'react';
 import Canvas from './Canvas/Canvas';
 import ControlBar from './ControlBar/ControlBar';
-import './Editor.scss';
+import styles from './Editor.module.css';
 
 const Editor = () => {
   const context = useStore();
@@ -53,10 +53,10 @@ const Editor = () => {
       onMouseMove={onMouseMove}
       onMouseUp={disableActions}
       onMouseLeave={disableActions}
-      className="main-container"
+      className={styles.mainContainer}
       ref={editorRef}
     >
-      <div className="content">
+      <div className={styles.content}>
         <ControlBar />
         <Canvas />
       </div>
