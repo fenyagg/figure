@@ -160,4 +160,9 @@ export const CanvasStore = types
     get isResizing() {
       return self.resizingType !== EResizeType.DISABLE;
     },
+    get selectedFigure() {
+      return self.figures.find(
+        figureItem => figureItem.id === self.selectedFigureId
+      );
+    },
   }));

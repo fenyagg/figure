@@ -1,0 +1,38 @@
+.figureFrame {
+	position: absolute;
+	outline: 1px solid red;
+	cursor: grab;
+	z-index: 1;
+}
+
+.dot {
+	position: absolute;
+	width: 14px;
+	height: 14px;
+	background-color: red;
+	z-index: 1;
+}
+
+.dotLeftTop {
+	cursor: nw-resize;
+	left: -7px;
+	top: -7px;
+}
+
+.dotLeftBot {
+	cursor: ne-resize;
+	left: -7px;
+	bottom: -7px;
+}
+
+.dotRightTop {
+	cursor: ne-resize;
+	right: -7px;
+	top: -7px;
+}
+
+.dotRightBot {
+	cursor: nw-resize;
+	right: -7px;
+	bottom: -7px;
+}
