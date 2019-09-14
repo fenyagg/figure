@@ -17,15 +17,23 @@ const Figure: React.FC<IProps> = ({ figure }) => {
     return figure.id === context.canvas.selectedFigureId;
   }, [figure.id, context.canvas.selectedFigureId]);
 
-  const onFigureClick = () => {
+  const onFigureClick = (e: MouseEvent) => {
+    const event = new window.MouseEvent('click', {
+      bubbles: true,
+      cancelable: true,
+      view: window,
+      clientX: e.clientX,
+      clientY: e.clientY,
+    });
+    document.dispatchEvent(event);
     if (!isSelected) {
       context.canvas.selectFigure(figure.id);
     }
   };
 
   return (
-    <div
-      key={figure.id}
+    <SvgFigure
+      type={figure.type}
       style={{
         width: figure.width,
         height: figure.height,
@@ -35,17 +43,13 @@ const Figure: React.FC<IProps> = ({ figure }) => {
           0
         )`,
       }}
+      preserveAspectRatio="none"
       className={classNames(styles.figure, {
         [styles.figureSelected]: isSelected,
       })}
-      onClick={onFigureClick}
-    >
-      <SvgFigure
-        type={figure.type}
-        preserveAspectRatio="none"
-        className={styles.figureImg}
-      />
-    </div>
+      insideClassName={styles.figureInside}
+      onClickInside={onFigureClick}
+    />
   );
 };
 

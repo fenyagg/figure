@@ -3,6 +3,7 @@ import { EFigureType } from 'stores/models/Canvas/canvas.types';
 import Circle from '../svg/Circle';
 import Square from '../svg/Square';
 import Triangle from '../svg/Triangle';
+import { ISvgFigureProps } from '../svg/ISvgFigureProps';
 
 export const figuresMap = {
   [EFigureType.SQUARE]: Square,
@@ -10,7 +11,7 @@ export const figuresMap = {
   [EFigureType.CIRCLE]: Circle,
 };
 
-interface IProps extends React.SVGProps<SVGSVGElement> {
+interface IProps extends ISvgFigureProps {
   type: EFigureType;
 }
 
