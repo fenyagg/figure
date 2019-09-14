@@ -59,7 +59,12 @@ const FigureFrame: React.FC = () => {
           0
         )`,
       }}
-      className={styles.figureFrame}
+      className={classNames(styles.figureFrame, {
+        // TODO: fix bug with cursor changing
+        //  https://bugs.chromium.org/p/chromium/issues/detail?id=26723
+        [styles.figureFrameCanDrag]: !context.canvas.isResizing,
+        [styles.figureFrameDragging]: context.canvas.isDragging,
+      })}
       onMouseDown={onFigureFrameMouseDown}
     >
       {dotList.map(dot => (

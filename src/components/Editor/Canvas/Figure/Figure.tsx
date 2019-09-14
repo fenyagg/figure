@@ -13,12 +13,12 @@ interface IProps {
 const Figure: React.FC<IProps> = ({ figure }) => {
   const context = useStore();
 
-  const isActive = useMemo(() => {
+  const isSelected = useMemo(() => {
     return figure.id === context.canvas.selectedFigureId;
   }, [figure.id, context.canvas.selectedFigureId]);
 
   const onFigureClick = () => {
-    if (!isActive) {
+    if (!isSelected) {
       context.canvas.selectFigure(figure.id);
     }
   };
@@ -36,7 +36,7 @@ const Figure: React.FC<IProps> = ({ figure }) => {
         )`,
       }}
       className={classNames(styles.figure, {
-        [styles.figureDragging]: isActive && context.canvas.isDragging,
+        [styles.figureSelected]: isSelected,
       })}
       onClick={onFigureClick}
     >

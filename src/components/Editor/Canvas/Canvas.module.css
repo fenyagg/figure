@@ -4,3 +4,10 @@
 	position: relative;
 }
 
+.cursorNW {
+	cursor: nw-resize;
+}
+
+.cursorNE {
+	cursor: nw-resize;
+}

@@ -2,11 +2,6 @@
   position: absolute;
 }
 
-.figureDragging {
-  cursor: grabbing;
-  opacity: .5;
-}
-
 .figureImg {
   position: relative;
   fill: #FF9800;
@@ -14,4 +9,8 @@
   stroke-linejoin: round;
   width: 100%;
   height: 100%;
+}
+
+.figureSelected .figureImg {
+  stroke: #86190e;
 }
