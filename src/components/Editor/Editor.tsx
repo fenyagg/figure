@@ -11,15 +11,6 @@ const Editor = () => {
   const isEditorTarget = (target: EventTarget) => {
     return target === editorRef.current;
   };
-
-  const onMouseMove = (e: MouseEvent) => {
-    if (context.canvas.isDragging) {
-      context.canvas.moveSelectedFigure(e.movementX, e.movementY);
-    }
-    if (context.canvas.isResizing) {
-      context.canvas.resizeSelectedFigure(e.movementX, e.movementY);
-    }
-  };
   const disableActions = (e: MouseEvent) => {
     if (isEditorTarget(e.currentTarget)) {
       if (context.canvas.isDragging) {
@@ -50,7 +41,6 @@ const Editor = () => {
 
   return (
     <div
-      onMouseMove={onMouseMove}
       onMouseUp={disableActions}
       onMouseLeave={disableActions}
       className={styles.mainContainer}

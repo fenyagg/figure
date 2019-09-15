@@ -31,6 +31,45 @@ export const CanvasStore = types
       Object.values(EFigureType)
     ),
   })
+  .views(self => ({
+    get isResizing() {
+      return self.resizingType !== EResizeType.DISABLE;
+    },
+    get selectedFigure() {
+      return self.figures.find(
+        figureItem => figureItem.id === self.selectedFigureId
+      );
+    },
+  }))
+  .views(self => ({
+    get activeDotPosition() {
+      if (!self.selectedFigure) {
+        return;
+      }
+      switch (self.resizingType) {
+        case EResizeType.LEFT_TOP:
+          return {
+            x: self.selectedFigure.left,
+            y: self.selectedFigure.top,
+          };
+        case EResizeType.LEFT_BOT:
+          return {
+            x: self.selectedFigure.left,
+            y: self.selectedFigure.top + self.selectedFigure.height,
+          };
+        case EResizeType.RIGHT_TOP:
+          return {
+            x: self.selectedFigure.left + self.selectedFigure.width,
+            y: self.selectedFigure.top,
+          };
+        case EResizeType.RIGHT_BOT:
+          return {
+            x: self.selectedFigure.left + self.selectedFigure.width,
+            y: self.selectedFigure.top + self.selectedFigure.height,
+          };
+      }
+    },
+  }))
   .actions(self => ({
     addFigure(figureType: EFigureType, width = 150, height = 150) {
       const newFigure = {
@@ -51,31 +90,28 @@ export const CanvasStore = types
     },
 
     moveSelectedFigure(changeX: number, changeY: number) {
-      const figure: IFigure | undefined = self.figures.find(
-        figureItem => figureItem.id === self.selectedFigureId
-      );
-      if (!figure) {
+      if (!self.selectedFigure) {
         return;
       }
       // set position left
-      let nextPositionLeft = figure.left + changeX;
+      let nextPositionLeft = self.selectedFigure.left + changeX;
       if (nextPositionLeft < 0) {
         nextPositionLeft = 0;
       }
-      if (nextPositionLeft > self.width - figure.width) {
-        nextPositionLeft = self.width - figure.width;
+      if (nextPositionLeft > self.width - self.selectedFigure.width) {
+        nextPositionLeft = self.width - self.selectedFigure.width;
       }
-      figure.left = nextPositionLeft;
+      self.selectedFigure.left = nextPositionLeft;
 
       // set position top
-      let nextPositionTop = figure.top + changeY;
+      let nextPositionTop = self.selectedFigure.top + changeY;
       if (nextPositionTop < 0) {
         nextPositionTop = 0;
       }
-      if (nextPositionTop > self.height - figure.height) {
-        nextPositionTop = self.height - figure.height;
+      if (nextPositionTop > self.height - self.selectedFigure.height) {
+        nextPositionTop = self.height - self.selectedFigure.height;
       }
-      figure.top = nextPositionTop;
+      self.selectedFigure.top = nextPositionTop;
     },
 
     deleteSelectedFigure() {
@@ -105,68 +141,91 @@ export const CanvasStore = types
     },
 
     resizeSelectedFigure(changeX: number, changeY: number) {
-      const figure: IFigure | undefined = self.figures.find(
-        figureItem => figureItem.id === self.selectedFigureId
-      );
-      if (!figure || (!changeX && !changeY)) {
+      if (!self.selectedFigure || (!changeX && !changeY)) {
         return;
       }
       const figureChanges = {
-        left: figure.left,
-        top: figure.top,
-        width: figure.width,
-        height: figure.height,
+        left: self.selectedFigure.left,
+        top: self.selectedFigure.top,
+        width: self.selectedFigure.width,
+        height: self.selectedFigure.height,
       };
+
+      const resizeFigure = (
+        leftFactor: number,
+        topFactor: number,
+        widthFactor: number,
+        heightFactor: number
+      ) => {
+        if (!self.selectedFigure) {
+          return;
+        }
+        figureChanges.left += changeX * leftFactor;
+        figureChanges.top += changeY * topFactor;
+        figureChanges.width += changeX * widthFactor;
+        figureChanges.height += changeY * heightFactor;
+
+        // if out left
+        if (figureChanges.left < 0) {
+          figureChanges.width += figureChanges.left;
+          figureChanges.left = 0;
+        }
+
+        // if out right
+        if (figureChanges.left + figureChanges.width > self.width) {
+          figureChanges.width = self.width - figureChanges.left;
+        }
+
+        // if out top
+        if (figureChanges.top < 0) {
+          figureChanges.height += figureChanges.top;
+          figureChanges.top = 0;
+        }
+
+        // if out bot
+        if (figureChanges.top + figureChanges.height > self.height) {
+          figureChanges.height = self.height - figureChanges.top;
+        }
+
+        // if less than min width
+        if (figureChanges.width < self.minFigureWidth) {
+          const diffMinWidth = self.minFigureWidth - figureChanges.width;
+          // back changes to min
+          figureChanges.width = self.minFigureWidth;
+          figureChanges.left += diffMinWidth * leftFactor * -1;
+        }
+
+        // if less than min height
+        if (figureChanges.height < self.minFigureHeight) {
+          const diffMinHeight = self.minFigureHeight - figureChanges.height;
+          // back changes to min
+          figureChanges.height = self.minFigureHeight;
+          figureChanges.top += diffMinHeight * topFactor * -1;
+        }
+
+        // update figure
+        self.selectedFigure.left = figureChanges.left;
+        self.selectedFigure.top = figureChanges.top;
+        self.selectedFigure.width = figureChanges.width;
+        self.selectedFigure.height = figureChanges.height;
+      };
+
       // set sizes and position based on resize type
       switch (self.resizingType) {
         case EResizeType.LEFT_TOP:
-          figureChanges.left += changeX;
-          figureChanges.top += changeY;
-          figureChanges.width -= changeX;
-          figureChanges.height -= changeY;
+          resizeFigure(1, 1, -1, -1);
           break;
         case EResizeType.LEFT_BOT:
-          figureChanges.left += changeX;
-          figureChanges.width -= changeX;
-          figureChanges.height += changeY;
+          resizeFigure(1, 0, -1, 1);
           break;
         case EResizeType.RIGHT_TOP:
-          figureChanges.top += changeY;
-          figureChanges.width += changeX;
-          figureChanges.height -= changeY;
+          resizeFigure(0, 1, 1, -1);
           break;
         case EResizeType.RIGHT_BOT:
-          figureChanges.width += changeX;
-          figureChanges.height += changeY;
+          resizeFigure(0, 0, 1, 1);
           break;
         case EResizeType.DISABLE:
           return;
       }
-      // save figure in canvas and save min size
-      if (
-        figureChanges.left < 0 ||
-        figureChanges.top < 0 ||
-        figureChanges.left + figureChanges.width > self.width ||
-        figureChanges.top + figureChanges.height > self.height ||
-        figureChanges.width < self.minFigureWidth ||
-        figureChanges.height < self.minFigureHeight
-      ) {
-        return;
-      }
-      // update figure
-      figure.left = figureChanges.left;
-      figure.top = figureChanges.top;
-      figure.width = figureChanges.width;
-      figure.height = figureChanges.height;
-    },
-  }))
-  .views(self => ({
-    get isResizing() {
-      return self.resizingType !== EResizeType.DISABLE;
-    },
-    get selectedFigure() {
-      return self.figures.find(
-        figureItem => figureItem.id === self.selectedFigureId
-      );
     },
   }));

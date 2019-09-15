@@ -1,15 +1,15 @@
 import { useStore } from 'hooks/useStore';
 import { observer } from 'mobx-react-lite';
-import React, { MouseEvent, useRef } from 'react';
+import React, { MouseEvent, MutableRefObject, useRef } from 'react';
 import styles from './Canvas.module.css';
 import Figure from './Figure/Figure';
 import FigureFrame from './FigureFrame/FigureFrame';
 import classNames from 'classnames';
-import { EResizeType } from '../../../stores/models/Canvas/canvas.types';
+import { EResizeType } from 'stores/models/Canvas/canvas.types';
 
 const Canvas = () => {
   const context = useStore();
-  const canvasRef = useRef(null);
+  const canvasRef: MutableRefObject<HTMLDivElement | null> = useRef(null);
 
   const onMouseDown = (e: MouseEvent) => {
     if (
@@ -20,8 +20,23 @@ const Canvas = () => {
     }
   };
   const onMouseLeave = (e: MouseEvent) => {
-    if (e.currentTarget === canvasRef.current && context.canvas.isDragging) {
-      context.canvas.stopDragging();
+    if (e.currentTarget === canvasRef.current) {
+      if (context.canvas.isDragging) {
+        context.canvas.stopDragging();
+      }
+    }
+  };
+  const onMouseMove = (e: MouseEvent) => {
+    if (context.canvas.isDragging) {
+      context.canvas.moveSelectedFigure(e.movementX, e.movementY);
+    }
+    const activeDotPosition = context.canvas.activeDotPosition;
+    if (context.canvas.isResizing && canvasRef.current && activeDotPosition) {
+      // resize based on relative position and activeDot
+      context.canvas.resizeSelectedFigure(
+        e.pageX - canvasRef.current.offsetLeft - activeDotPosition.x,
+        e.pageY - canvasRef.current.offsetTop - activeDotPosition.y
+      );
     }
   };
 
@@ -39,6 +54,7 @@ const Canvas = () => {
         ].includes(context.canvas.resizingType),
       })}
       style={{ width: context.canvas.width, height: context.canvas.height }}
+      onMouseMove={onMouseMove}
       onMouseLeave={onMouseLeave}
       onMouseDown={onMouseDown}
       ref={canvasRef}
