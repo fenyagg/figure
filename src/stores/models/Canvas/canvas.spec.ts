@@ -1,4 +1,4 @@
-import { CanvasStore } from "./Canvas";
+import { CanvasStore, IFigure } from './Canvas';
 import { getSnapshot, SnapshotIn } from "mobx-state-tree";
 import { EFigureType, EResizeType } from "./canvas.types";
 
@@ -230,17 +230,33 @@ describe('Canvas model', () => {
       });
     });
 
-    describe("setIsDragging", () => {
+    describe("startDragging", () => {
       it('should handle success', () => {
         const startStore = {
           figures: [],
           isDragging: false,
         };
         const store = getStore(startStore);
-        store.setIsDragging(true);
+        store.startDragging();
         const expectResult: ICanvasStore = {
           ...store,
           isDragging: true,
+        };
+        return expect(store).toEqual(expectResult);
+      });
+    });
+
+    describe("stopDragging", () => {
+      it('should handle success', () => {
+        const startStore = {
+          figures: [],
+          isDragging: true,
+        };
+        const store = getStore(startStore);
+        store.stopDragging();
+        const expectResult: ICanvasStore = {
+          ...store,
+          isDragging: false,
         };
         return expect(store).toEqual(expectResult);
       });
@@ -311,25 +327,33 @@ describe('Canvas model', () => {
           return expect(store).toEqual(expectResult);
         });
 
-        it("should no resize on trying set position lower 0", () => {
+        it("should no resize out the canvas left top", () => {
           const store = getStore(startResizeStore);
           store.resizeSelectedFigure(-110, -110);
           const expectResult: ICanvasStore = {
             ...store,
             figures: [{
               ...startResizeStore.figures![0],
+              height: 300,
+              width: 300,
+              left: 0,
+              top: 0,
             }],
           };
           return expect(store).toEqual(expectResult);
         });
 
-        it("should no resize on trying resize out the box", () => {
+        it("should no resize out the canvas right bop", () => {
           const store = getStore(startResizeStore);
           store.resizeSelectedFigure(600, 600);
           const expectResult: ICanvasStore = {
             ...store,
             figures: [{
               ...startResizeStore.figures![0],
+              height: 100,
+              left: 200,
+              top: 200,
+              width: 100,
             }],
           };
           return expect(store).toEqual(expectResult);
@@ -445,6 +469,38 @@ describe('Canvas model', () => {
           resizingType: EResizeType.LEFT_BOT,
         });
         return expect(store.isResizing).toBeTruthy();
+      });
+    });
+    describe("selectedFigure", () => {
+      it("should return figure with selectedFigureId", () => {
+        const figure: IFigure = {
+          id: '1',
+          left: 0,
+          height: 0,
+          width: 0,
+          type: EFigureType.CIRCLE,
+          top: 0,
+        };
+        const store = getStore({
+          figures: [figure],
+          selectedFigureId: figure.id,
+        });
+        return expect(store.selectedFigure).toEqual(figure);
+      });
+      it("should return undefined without selectedFigureId", () => {
+        const figure: IFigure = {
+          id: '1',
+          left: 0,
+          height: 0,
+          width: 0,
+          type: EFigureType.CIRCLE,
+          top: 0,
+        };
+        const store = getStore({
+          figures: [figure],
+          selectedFigureId: null,
+        });
+        return expect(store.selectedFigure).toBeUndefined();
       });
     });
   });
