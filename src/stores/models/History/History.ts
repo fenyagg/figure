@@ -5,14 +5,20 @@ import {
   SnapshotOut,
   types,
 } from 'mobx-state-tree';
-import { canvasService } from 'services/CanvasService';
-import { CanvasStore } from '../Canvas/Canvas';
+import { historyService } from 'services/HistoryService';
+import { CanvasStore, IFigure } from '../Canvas/Canvas';
 
-const HistoryModel = types.model(CanvasStore.properties);
+const CanvasHistoryModel = types.model({
+  figures: CanvasStore.properties.figures,
+});
+
+export interface ICanvasHistory {
+  figures: IFigure[];
+}
 
 export const HistoryStore = types
   .model({
-    snapShots: types.array(HistoryModel),
+    snapShots: types.array(CanvasHistoryModel),
     activeSnapIndex: types.optional(types.number, 0),
   })
   .views(self => ({
@@ -36,7 +42,7 @@ export const HistoryStore = types
       self.snapShots.push(snap);
       self.activeSnapIndex = self.snapShots.length - 1;
 
-      canvasService.setValue(snap);
+      historyService.saveSnap(self.snapShots[self.activeSnapIndex]);
     },
     changeIndexBy(indexChange: number) {
       const targetSnapIndex = self.activeSnapIndex + indexChange;
@@ -45,10 +51,14 @@ export const HistoryStore = types
       if (targetSnapIndex + 1 > self.snapShots.length) {
         return;
       }
-      const targetSnap = self.snapShots[targetSnapIndex];
+      const historySnap = self.snapShots[targetSnapIndex];
+      const targetSnap = {
+        ...getSnapshot(rootStore.canvas),
+        ...getSnapshot(historySnap),
+      };
       self.activeSnapIndex = targetSnapIndex;
-      applySnapshot(rootStore.canvas, getSnapshot(targetSnap));
+      applySnapshot(rootStore.canvas, targetSnap);
 
-      canvasService.setValue(targetSnap);
+      historyService.saveSnap(historySnap);
     },
   }));

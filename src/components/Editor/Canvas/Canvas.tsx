@@ -21,7 +21,7 @@ const Canvas = () => {
   };
   const onMouseLeave = (e: MouseEvent) => {
     if (e.currentTarget === canvasRef.current && context.canvas.isDragging) {
-      context.canvas.setIsDragging(false);
+      context.canvas.stopDragging();
     }
   };
 

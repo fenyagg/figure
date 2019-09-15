@@ -2,7 +2,7 @@ import { destroy, SnapshotIn, types } from 'mobx-state-tree';
 import shortid from 'shortid';
 import { EFigureType, EResizeType } from './canvas.types';
 
-const Figure = types.model({
+export const Figure = types.model({
   id: types.identifier,
   left: types.number,
   top: types.number,
@@ -88,8 +88,12 @@ export const CanvasStore = types
       }
     },
 
-    setIsDragging(isDragging: boolean) {
-      self.isDragging = isDragging;
+    startDragging() {
+      self.isDragging = true;
+    },
+
+    stopDragging() {
+      self.isDragging = false;
     },
 
     setResizingType(type: EResizeType) {

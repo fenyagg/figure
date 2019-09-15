@@ -40,7 +40,7 @@ const FigureFrame: React.FC = () => {
     e.stopPropagation();
     const isLeftMouseButton = e.button === 0;
     if (isLeftMouseButton) {
-      context.canvas.setIsDragging(true);
+      context.canvas.startDragging();
     }
   };
 

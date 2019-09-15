@@ -1,7 +1,7 @@
 import { onAction, types } from 'mobx-state-tree';
 import React from 'react';
-import { canvasService } from 'services/CanvasService';
-import { onCanvasAction } from './actionHandlers/onCanvasAction';
+import { historyService } from 'services/HistoryService';
+import { canvasActionHandler } from './actionHandlers/canvasActionHandler';
 import { CanvasStore } from './models/Canvas/Canvas';
 import { HistoryStore } from './models/History/History';
 
@@ -10,9 +10,11 @@ const model = types.model({
   history: HistoryStore,
 });
 
-const canvasStoreData = canvasService.getValue() || {
+const canvasStoreData = {
   figures: [],
+  ...historyService.getSnap(),
 };
+
 export const store = model.create({
   canvas: canvasStoreData,
   history: {
@@ -20,8 +22,7 @@ export const store = model.create({
   },
 });
 
-onAction(store, onCanvasAction, true);
+onAction(store, canvasActionHandler, true);
 
 export type IStore = typeof store;
-
 export const StoreContext = React.createContext(store);

@@ -23,7 +23,7 @@ const Editor = () => {
   const disableActions = (e: MouseEvent) => {
     if (isEditorTarget(e.currentTarget)) {
       if (context.canvas.isDragging) {
-        context.canvas.setIsDragging(false);
+        context.canvas.stopDragging();
       }
       if (context.canvas.isResizing) {
         context.canvas.stopResizing();
