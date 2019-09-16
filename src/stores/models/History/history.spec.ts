@@ -1,6 +1,7 @@
 import { getSnapshot, SnapshotIn, types } from "mobx-state-tree";
+import { EFigureType } from 'stores/models/Canvas/canvas.types';
 import { HistoryStore } from "./History";
-import { CanvasStore } from "../Canvas/Canvas";
+import { CanvasStore, IFigure } from '../Canvas/Canvas';
 
 type IHistoryStore = SnapshotIn<typeof HistoryStore>;
 type ICanvasStore = SnapshotIn<typeof CanvasStore>;
@@ -22,12 +23,21 @@ const getStore = (historySnap: IHistoryStore = defaultHistoryStore, canvasSnap: 
 
 const getCanvasSnap = (snap: ICanvasStore = defaultCanvasStore) => getSnapshot(CanvasStore.create(snap));
 
+const defaultFigure: IFigure = {
+  id: 'Some figure',
+  type: EFigureType.CIRCLE,
+  height: 10,
+  width: 20,
+  left: 30,
+  top: 40,
+};
+
 describe('Canvas model', () => {
   it('should create store', () => {
     const expectResult: IHistoryStore = {
-      snapShots: [
-        getCanvasSnap(),
-      ],
+      snapShots: [{
+        figures: [],
+      }],
       activeSnapIndex: 0,
     };
     return expect(getSnapshot(getStore().history)).toEqual(expectResult);
@@ -43,8 +53,8 @@ describe('Canvas model', () => {
         store.history.addSnapShot(newCanvasSnap);
         const expectResult: IHistoryStore = {
           snapShots: [
-            getCanvasSnap(),
-            newCanvasSnap,
+            defaultCanvasStore,
+            defaultCanvasStore,
           ],
           activeSnapIndex: 1,
         };
@@ -55,20 +65,26 @@ describe('Canvas model', () => {
       it("should add snap and remove all after active", () => {
         const store = getStore({
           snapShots: [
-            getCanvasSnap(),
-            getCanvasSnap(),
-            getCanvasSnap(),
+            defaultCanvasStore,
+            defaultCanvasStore,
+            defaultCanvasStore,
           ],
           activeSnapIndex: 0,
         });
         const newCanvasSnap = getCanvasSnap({
-          selectedFigureId: 'test'
+          figures: [{
+            ...defaultFigure
+          }]
         });
         store.history.addSnapShot(newCanvasSnap);
         const expectResult: IHistoryStore = {
           snapShots: [
-            getCanvasSnap(),
-            newCanvasSnap,
+            defaultCanvasStore,
+            {
+              figures: [{
+                ...defaultFigure
+              }]
+            },
           ],
           activeSnapIndex: 1,
         };
@@ -79,19 +95,23 @@ describe('Canvas model', () => {
 
     describe("changeIndexBy", () => {
       it("should apply snap to canvas store", () => {
-        const sampleCanvasStore = getCanvasSnap({
-          selectedFigureId: 'figure',
-        });
         const store = getStore({
           snapShots: [
-            getCanvasSnap(),
-            sampleCanvasStore,
+            {figures: []},
+            {figures: [{...defaultFigure}]},
           ],
           activeSnapIndex: 0,
+        }, {
+          figures: [],
+          selectedFigureId: 'some figure',
         });
         store.history.changeIndexBy(1);
 
-        return expect(getSnapshot(store.canvas)).toEqual(sampleCanvasStore);
+        return expect(getSnapshot(store.canvas)).toEqual({
+          ...getSnapshot(store.canvas),
+          selectedFigureId: 'some figure',
+          figures: [{...defaultFigure}]
+        });
       });
 
       it("should change active index", () => {
