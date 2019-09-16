@@ -157,9 +157,6 @@ export const CanvasStore = types
         widthFactor: number,
         heightFactor: number
       ) => {
-        if (!self.selectedFigure) {
-          return;
-        }
         figureChanges.left += changeX * leftFactor;
         figureChanges.top += changeY * topFactor;
         figureChanges.width += changeX * widthFactor;
@@ -204,10 +201,10 @@ export const CanvasStore = types
         }
 
         // update figure
-        self.selectedFigure.left = figureChanges.left;
-        self.selectedFigure.top = figureChanges.top;
-        self.selectedFigure.width = figureChanges.width;
-        self.selectedFigure.height = figureChanges.height;
+        self.selectedFigure!.left = figureChanges.left;
+        self.selectedFigure!.top = figureChanges.top;
+        self.selectedFigure!.width = figureChanges.width;
+        self.selectedFigure!.height = figureChanges.height;
       };
 
       // set sizes and position based on resize type

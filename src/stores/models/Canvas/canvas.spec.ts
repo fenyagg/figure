@@ -332,42 +332,6 @@ describe('Canvas model', () => {
           return expect(store).toEqual(expectResult);
         });
 
-        it('should no resize out the canvas left top', () => {
-          const store = getStore(startResizeStore);
-          store.resizeSelectedFigure(-110, -110);
-          const expectResult: ICanvasStore = {
-            ...store,
-            figures: [
-              {
-                ...startResizeStore.figures![0],
-                height: 300,
-                width: 300,
-                left: 0,
-                top: 0,
-              },
-            ],
-          };
-          return expect(store).toEqual(expectResult);
-        });
-
-        it('should no resize out the canvas right bop', () => {
-          const store = getStore(startResizeStore);
-          store.resizeSelectedFigure(600, 600);
-          const expectResult: ICanvasStore = {
-            ...store,
-            figures: [
-              {
-                ...startResizeStore.figures![0],
-                height: 100,
-                left: 200,
-                top: 200,
-                width: 100,
-              },
-            ],
-          };
-          return expect(store).toEqual(expectResult);
-        });
-
         it('should no resize without selected figures', () => {
           const store = getStore({
             ...startResizeStore,
@@ -473,6 +437,141 @@ describe('Canvas model', () => {
           return expect(store).toEqual(expectResult);
         });
       });
+
+      describe('without selectedFigure', () => {
+        it('should no resize', () => {
+          const store = getStore({
+            ...startResizeStore,
+            selectedFigureId: null,
+          });
+          store.resizeSelectedFigure(50, 60);
+          const expectResult: ICanvasStore = {
+            ...store,
+            figures: [
+              {
+                ...startResizeStore.figures![0],
+              },
+            ],
+          };
+          return expect(store).toEqual(expectResult);
+        });
+      });
+
+      describe('with over changes', () => {
+        it('should keep figure in canvas on left', () => {
+          const store = getStore(startResizeStore);
+          store.resizeSelectedFigure(-110, 0);
+          const expectResult: ICanvasStore = {
+            ...store,
+            figures: [
+              {
+                ...startResizeStore.figures![0],
+                height: 200,
+                width: 300,
+                left: 0,
+                top: 100,
+              },
+            ],
+          };
+          return expect(store).toEqual(expectResult);
+        });
+
+        it('should keep figure in canvas on right', () => {
+          const store = getStore({
+            ...startResizeStore,
+            resizingType: EResizeType.RIGHT_TOP,
+          });
+          store.resizeSelectedFigure(1000, 0);
+          const expectResult: ICanvasStore = {
+            ...store,
+            figures: [
+              {
+                ...startResizeStore.figures![0],
+                height: 200,
+                width: 700,
+                left: 100,
+                top: 100,
+              },
+            ],
+          };
+          return expect(store).toEqual(expectResult);
+        });
+
+        it('should keep figure in canvas on top', () => {
+          const store = getStore(startResizeStore);
+          store.resizeSelectedFigure(0, -1000);
+          const expectResult: ICanvasStore = {
+            ...store,
+            figures: [
+              {
+                ...startResizeStore.figures![0],
+                height: 300,
+                width: 200,
+                left: 100,
+                top: 0,
+              },
+            ],
+          };
+          return expect(store).toEqual(expectResult);
+        });
+
+        it('should keep figure in canvas on bot', () => {
+          const store = getStore({
+            ...startResizeStore,
+            resizingType: EResizeType.RIGHT_BOT,
+          });
+          store.resizeSelectedFigure(0, 1000);
+          const expectResult: ICanvasStore = {
+            ...store,
+            figures: [
+              {
+                ...startResizeStore.figures![0],
+                height: 700,
+                width: 200,
+                left: 100,
+                top: 100,
+              },
+            ],
+          };
+          return expect(store).toEqual(expectResult);
+        });
+
+        it('should save min figure width', () => {
+          const store = getStore(startResizeStore);
+          store.resizeSelectedFigure(300, 0);
+          const expectResult: ICanvasStore = {
+            ...store,
+            figures: [
+              {
+                ...startResizeStore.figures![0],
+                height: 200,
+                width: 100,
+                left: 200,
+                top: 100,
+              },
+            ],
+          };
+          return expect(store).toEqual(expectResult);
+        });
+
+        it('should save min figure height', () => {
+          const store = getStore(startResizeStore);
+          store.resizeSelectedFigure(0, 300);
+          const expectResult: ICanvasStore = {
+            ...store,
+            figures: [
+              {
+                ...startResizeStore.figures![0],
+                height: 100,
+                width: 200,
+                left: 100,
+                top: 200,
+              },
+            ],
+          };
+          return expect(store).toEqual(expectResult);
+        });
+      });
     });
   });
 
@@ -520,6 +619,109 @@ describe('Canvas model', () => {
           selectedFigureId: null,
         });
         return expect(store.selectedFigure).toBeUndefined();
+      });
+    });
+    describe('activeDotPosition', () => {
+      it('should return dot position for type LEFT_TOP', () => {
+        const figure: IFigure = {
+          id: '1',
+          left: 10,
+          height: 20,
+          width: 30,
+          top: 40,
+          type: EFigureType.CIRCLE,
+        };
+        const store = getStore({
+          figures: [figure],
+          selectedFigureId: figure.id,
+          resizingType: EResizeType.LEFT_TOP,
+        });
+        const expectResult = {
+          x: figure.left,
+          y: figure.top,
+        };
+        return expect(store.activeDotPosition).toEqual(expectResult);
+      });
+
+      it('should return dot position for type LEFT_BOT', () => {
+        const figure: IFigure = {
+          id: '1',
+          left: 10,
+          height: 20,
+          width: 30,
+          top: 40,
+          type: EFigureType.CIRCLE,
+        };
+        const store = getStore({
+          figures: [figure],
+          selectedFigureId: figure.id,
+          resizingType: EResizeType.LEFT_BOT,
+        });
+        const expectResult = {
+          x: figure.left,
+          y: figure.top + figure.height,
+        };
+        return expect(store.activeDotPosition).toEqual(expectResult);
+      });
+
+      it('should return dot position for type RIGHT_TOP', () => {
+        const figure: IFigure = {
+          id: '1',
+          left: 10,
+          height: 20,
+          width: 30,
+          top: 40,
+          type: EFigureType.CIRCLE,
+        };
+        const store = getStore({
+          figures: [figure],
+          selectedFigureId: figure.id,
+          resizingType: EResizeType.RIGHT_TOP,
+        });
+        const expectResult = {
+          x: figure.left + figure.width,
+          y: figure.top,
+        };
+        return expect(store.activeDotPosition).toEqual(expectResult);
+      });
+
+      it('should return dot position for type RIGHT_BOT', () => {
+        const figure: IFigure = {
+          id: '1',
+          left: 10,
+          height: 20,
+          width: 30,
+          top: 40,
+          type: EFigureType.CIRCLE,
+        };
+        const store = getStore({
+          figures: [figure],
+          selectedFigureId: figure.id,
+          resizingType: EResizeType.RIGHT_BOT,
+        });
+        const expectResult = {
+          x: figure.left + figure.width,
+          y: figure.top + figure.height,
+        };
+        return expect(store.activeDotPosition).toEqual(expectResult);
+      });
+
+      it('should return undefined without selectedFigure', () => {
+        const figure: IFigure = {
+          id: '1',
+          left: 10,
+          height: 20,
+          width: 30,
+          top: 40,
+          type: EFigureType.CIRCLE,
+        };
+        const store = getStore({
+          figures: [figure],
+          selectedFigureId: null,
+          resizingType: EResizeType.RIGHT_BOT,
+        });
+        const expectResult = undefined;
+        return expect(store.activeDotPosition).toEqual(expectResult);
       });
     });
   });
