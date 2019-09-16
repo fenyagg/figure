@@ -4,7 +4,7 @@ import ReactDOM from 'react-dom';
 import App from './containers/App/App';
 import './index.css';
 import * as serviceWorker from './serviceWorker';
-import { store } from './stores';
+import { store } from 'stores';
 
 if (process.env.NODE_ENV === 'development') {
   // tslint:disable-next-line:no-var-requires

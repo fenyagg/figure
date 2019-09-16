@@ -1,8 +1,8 @@
 import React, { MouseEvent } from 'react';
 import { observer } from 'mobx-react-lite';
-import { useStore } from '../../../../hooks/useStore';
+import { useStore } from 'hooks/useStore';
 import styles from './FigureFrame.module.css';
-import { EResizeType } from '../../../../stores/models/Canvas/canvas.types';
+import { EResizeType } from 'stores/models/Canvas/canvas.types';
 import classNames from 'classnames';
 
 const dotList = [
@@ -60,10 +60,9 @@ const FigureFrame: React.FC = () => {
         )`,
       }}
       className={classNames(styles.figureFrame, {
-        // TODO: fix bug with cursor changing
-        //  https://bugs.chromium.org/p/chromium/issues/detail?id=26723
         [styles.figureFrameCanDrag]: !context.canvas.isResizing,
         [styles.figureFrameDragging]: context.canvas.isDragging,
+        [styles.figureFrameIsResizing]: context.canvas.isResizing,
       })}
       onMouseDown={onFigureFrameMouseDown}
     >

@@ -12,6 +12,10 @@
 	cursor: grabbing;
 }
 
+.figureFrameIsResizing {
+	cursor: inherit;
+}
+
 .dot {
 	position: absolute;
 	width: 14px;
