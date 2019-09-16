@@ -44,7 +44,7 @@ export const CanvasStore = types
   .views(self => ({
     get activeDotPosition() {
       if (!self.selectedFigure) {
-        return;
+        return undefined;
       }
       switch (self.resizingType) {
         case EResizeType.LEFT_TOP:
