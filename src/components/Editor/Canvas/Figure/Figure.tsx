@@ -18,14 +18,6 @@ const Figure: React.FC<IProps> = ({ figure }) => {
   }, [figure.id, context.canvas.selectedFigureId]);
 
   const onFigureClick = (e: MouseEvent) => {
-    const event = new window.MouseEvent('click', {
-      bubbles: true,
-      cancelable: true,
-      view: window,
-      clientX: e.clientX,
-      clientY: e.clientY,
-    });
-    document.dispatchEvent(event);
     if (!isSelected) {
       context.canvas.selectFigure(figure.id);
     }
