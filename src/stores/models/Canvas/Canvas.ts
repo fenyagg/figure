@@ -67,6 +67,8 @@ export const CanvasStore = types
             x: self.selectedFigure.left + self.selectedFigure.width,
             y: self.selectedFigure.top + self.selectedFigure.height,
           };
+        default:
+          return undefined;
       }
     },
   }))
