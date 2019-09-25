@@ -19,7 +19,7 @@ export const CanvasStore = types
     selectedFigureId: types.maybeNull(types.string),
     width: types.optional(types.number, 800),
     height: types.optional(types.number, 600),
-    isDragging: types.optional(types.boolean, false),
+    draggingFigureId: types.maybeNull(types.string),
     resizingType: types.optional(
       types.enumeration(Object.values(EResizeType)),
       EResizeType.DISABLE
@@ -39,6 +39,9 @@ export const CanvasStore = types
       return self.figures.find(
         figureItem => figureItem.id === self.selectedFigureId
       );
+    },
+    get isDragging() {
+      return !!self.draggingFigureId;
     },
   }))
   .views(self => ({
@@ -91,29 +94,32 @@ export const CanvasStore = types
       self.selectedFigureId = figureId;
     },
 
-    moveSelectedFigure(changeX: number, changeY: number) {
-      if (!self.selectedFigure) {
+    moveDraggingFigure(changeX: number, changeY: number) {
+      const draggingFigure = self.figures.find(
+        figure => figure.id === self.draggingFigureId
+      );
+      if (!draggingFigure) {
         return;
       }
       // set position left
-      let nextPositionLeft = self.selectedFigure.left + changeX;
+      let nextPositionLeft = draggingFigure.left + changeX;
       if (nextPositionLeft < 0) {
         nextPositionLeft = 0;
       }
-      if (nextPositionLeft > self.width - self.selectedFigure.width) {
-        nextPositionLeft = self.width - self.selectedFigure.width;
+      if (nextPositionLeft > self.width - draggingFigure.width) {
+        nextPositionLeft = self.width - draggingFigure.width;
       }
-      self.selectedFigure.left = nextPositionLeft;
+      draggingFigure.left = nextPositionLeft;
 
       // set position top
-      let nextPositionTop = self.selectedFigure.top + changeY;
+      let nextPositionTop = draggingFigure.top + changeY;
       if (nextPositionTop < 0) {
         nextPositionTop = 0;
       }
-      if (nextPositionTop > self.height - self.selectedFigure.height) {
-        nextPositionTop = self.height - self.selectedFigure.height;
+      if (nextPositionTop > self.height - draggingFigure.height) {
+        nextPositionTop = self.height - draggingFigure.height;
       }
-      self.selectedFigure.top = nextPositionTop;
+      draggingFigure.top = nextPositionTop;
     },
 
     deleteSelectedFigure() {
@@ -126,12 +132,12 @@ export const CanvasStore = types
       }
     },
 
-    startDragging() {
-      self.isDragging = true;
+    startDragging(figureId: string) {
+      self.draggingFigureId = figureId;
     },
 
     stopDragging() {
-      self.isDragging = false;
+      self.draggingFigureId = null;
     },
 
     setResizingType(type: EResizeType) {

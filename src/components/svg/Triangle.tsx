@@ -2,7 +2,7 @@ import React from 'react';
 import { ISvgFigureProps } from './ISvgFigureProps';
 
 const Triangle: React.FC<ISvgFigureProps> = ({
-  onClickInside,
+  insideEvents = {},
   insideClassName,
   ...props
 }) => {
@@ -10,7 +10,7 @@ const Triangle: React.FC<ISvgFigureProps> = ({
     <svg viewBox="-1 -1 32 32" {...props}>
       <polygon
         className={insideClassName}
-        onClick={onClickInside}
+        {...insideEvents}
         points="15,0 00,30 30,30"
       />
     </svg>

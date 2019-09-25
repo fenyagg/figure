@@ -2,7 +2,7 @@ import React from 'react';
 import { ISvgFigureProps } from './ISvgFigureProps';
 
 const Circle: React.FC<ISvgFigureProps> = ({
-  onClickInside,
+  insideEvents = {},
   insideClassName,
   ...props
 }) => {
@@ -10,7 +10,7 @@ const Circle: React.FC<ISvgFigureProps> = ({
     <svg viewBox="-1 -1 32 32" {...props}>
       <ellipse
         className={insideClassName}
-        onClick={onClickInside}
+        {...insideEvents}
         cx="15"
         cy="15"
         rx="15"

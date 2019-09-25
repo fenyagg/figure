@@ -2,7 +2,7 @@
 	position: absolute;
 	outline: 1px solid red;
 	z-index: 1;
-	background-color: rgba(240, 248, 255, 0.4);
+	pointer-events: none;
 }
 
 .figureFrameCanDrag {
@@ -23,6 +23,7 @@
 	height: 14px;
 	background-color: red;
 	z-index: 1;
+	pointer-events: all;
 }
 
 .figureFrameDragging .dot {

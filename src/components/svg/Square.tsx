@@ -2,7 +2,7 @@ import React from 'react';
 import { ISvgFigureProps } from './ISvgFigureProps';
 
 const Square: React.FC<ISvgFigureProps> = ({
-  onClickInside,
+  insideEvents = {},
   insideClassName,
   ...props
 }) => {
@@ -10,7 +10,7 @@ const Square: React.FC<ISvgFigureProps> = ({
     <svg viewBox="-1 -1 32 32" {...props}>
       <rect
         className={insideClassName}
-        onClick={onClickInside}
+        {...insideEvents}
         width="30"
         height="30"
       />

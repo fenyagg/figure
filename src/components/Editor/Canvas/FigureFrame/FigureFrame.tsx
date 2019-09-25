@@ -36,14 +36,6 @@ const FigureFrame: React.FC = () => {
     }
   };
 
-  const onFigureFrameMouseDown = (e: MouseEvent) => {
-    e.stopPropagation();
-    const isLeftMouseButton = e.button === 0;
-    if (isLeftMouseButton) {
-      context.canvas.startDragging();
-    }
-  };
-
   if (!selectedFigure) {
     return null;
   }
@@ -64,7 +56,6 @@ const FigureFrame: React.FC = () => {
         [styles.figureFrameDragging]: context.canvas.isDragging,
         [styles.figureFrameIsResizing]: context.canvas.isResizing,
       })}
-      onMouseDown={onFigureFrameMouseDown}
     >
       {dotList.map(dot => (
         <div

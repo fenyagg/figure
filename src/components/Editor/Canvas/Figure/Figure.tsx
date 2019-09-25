@@ -2,7 +2,7 @@ import classNames from 'classnames';
 import SvgFigure from 'components/SvgFigure/SvgFigure';
 import { useStore } from 'hooks/useStore';
 import { observer } from 'mobx-react-lite';
-import React, { MouseEvent, useMemo } from 'react';
+import React, { MouseEvent, useMemo, useState } from 'react';
 import { IFigure } from 'stores/models/Canvas/Canvas';
 import styles from './Figure.module.css';
 
@@ -23,6 +23,13 @@ const Figure: React.FC<IProps> = ({ figure }) => {
     }
   };
 
+  const onFigureMouseDown = (e: MouseEvent) => {
+    const isLeftMouseButton = e.button === 0;
+    if (isLeftMouseButton) {
+      context.canvas.startDragging(figure.id);
+    }
+  };
+
   return (
     <SvgFigure
       type={figure.type}
@@ -40,7 +47,10 @@ const Figure: React.FC<IProps> = ({ figure }) => {
         [styles.figureSelected]: isSelected,
       })}
       insideClassName={styles.figureInside}
-      onClickInside={onFigureClick}
+      insideEvents={{
+        onClick: onFigureClick,
+        onMouseDown: onFigureMouseDown,
+      }}
     />
   );
 };
