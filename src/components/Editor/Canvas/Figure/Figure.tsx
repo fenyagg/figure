@@ -12,22 +12,31 @@ interface IProps {
 
 const Figure: React.FC<IProps> = ({ figure }) => {
   const context = useStore();
+  const [isHoldMouseDown, setHoldMouseDown] = useState(false);
 
   const isSelected = useMemo(() => {
     return figure.id === context.canvas.selectedFigureId;
   }, [figure.id, context.canvas.selectedFigureId]);
 
-  const onFigureClick = (e: MouseEvent) => {
-    if (!isSelected) {
+  const onFigureMouseUp = (e: MouseEvent) => {
+    e.stopPropagation();
+    if (context.canvas.isDragging) {
+      context.canvas.stopDragging();
+    }
+    if (!isSelected && isHoldMouseDown) {
       context.canvas.selectFigure(figure.id);
+      setHoldMouseDown(false);
     }
   };
-
   const onFigureMouseDown = (e: MouseEvent) => {
     const isLeftMouseButton = e.button === 0;
     if (isLeftMouseButton) {
+      setHoldMouseDown(true);
       context.canvas.startDragging(figure.id);
     }
+  };
+  const onFigureMouseMove = (e: MouseEvent) => {
+    setHoldMouseDown(false);
   };
 
   return (
@@ -47,8 +56,9 @@ const Figure: React.FC<IProps> = ({ figure }) => {
         [styles.figureSelected]: isSelected,
       })}
       insideClassName={styles.figureInside}
+      onMouseMove={onFigureMouseMove}
       insideEvents={{
-        onClick: onFigureClick,
+        onMouseUp: onFigureMouseUp,
         onMouseDown: onFigureMouseDown,
       }}
     />

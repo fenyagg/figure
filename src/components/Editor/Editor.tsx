@@ -7,22 +7,9 @@ import styles from './Editor.module.css';
 
 const Editor = () => {
   const context = useStore();
-  const editorRef = useRef(null);
-  const isEditorTarget = (target: EventTarget) => {
-    return target === editorRef.current;
-  };
-  const disableActions = (e: MouseEvent) => {
-    if (isEditorTarget(e.currentTarget)) {
-      if (context.canvas.isDragging) {
-        context.canvas.stopDragging();
-      }
-      if (context.canvas.isResizing) {
-        context.canvas.stopResizing();
-      }
-    }
-  };
 
   useEffect(() => {
+    // TODO: move to canvas
     const onKeyDown = (e: KeyboardEvent) => {
       if (context.canvas.selectedFigureId) {
         if (e.key === 'Delete') {
@@ -40,12 +27,7 @@ const Editor = () => {
   }, [context.canvas]);
 
   return (
-    <div
-      onMouseUp={disableActions}
-      onMouseLeave={disableActions}
-      className={styles.mainContainer}
-      ref={editorRef}
-    >
+    <div className={styles.mainContainer}>
       <div className={styles.content}>
         <ControlBar />
         <Canvas />

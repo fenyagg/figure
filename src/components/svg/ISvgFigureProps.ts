@@ -6,5 +6,6 @@ export interface ISvgFigureProps extends React.SVGProps<SVGSVGElement> {
     onClick?(e: MouseEvent): void;
     onMouseDown?(e: MouseEvent): void;
     onMouseMove?(e: MouseEvent): void;
+    onMouseUp?(e: MouseEvent): void;
   };
 }

@@ -11,7 +11,7 @@ const Canvas = () => {
   const context = useStore();
   const canvasRef: MutableRefObject<HTMLDivElement | null> = useRef(null);
 
-  const onClick = (e: MouseEvent) => {
+  const onMouseUp = (e: MouseEvent) => {
     if (
       e.currentTarget === canvasRef.current &&
       context.canvas.selectedFigureId
@@ -23,6 +23,9 @@ const Canvas = () => {
     if (e.currentTarget === canvasRef.current) {
       if (context.canvas.isDragging) {
         context.canvas.stopDragging();
+      }
+      if (context.canvas.isResizing) {
+        context.canvas.stopResizing();
       }
     }
   };
@@ -56,7 +59,7 @@ const Canvas = () => {
       style={{ width: context.canvas.width, height: context.canvas.height }}
       onMouseMove={onMouseMove}
       onMouseLeave={onMouseLeave}
-      onClick={onClick}
+      onMouseUp={onMouseUp}
       ref={canvasRef}
     >
       {context.canvas.figures.map(figure => (
