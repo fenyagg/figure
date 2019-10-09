@@ -1,6 +1,6 @@
 import { useStore } from 'hooks/useStore';
 import { observer } from 'mobx-react-lite';
-import React, { MouseEvent, MutableRefObject, useRef } from 'react';
+import React, { MouseEvent, MutableRefObject, useEffect, useRef, useState } from 'react';
 import styles from './Canvas.module.css';
 import Figure from './Figure/Figure';
 import FigureFrame from './FigureFrame/FigureFrame';
@@ -10,13 +10,18 @@ import { EResizeType } from 'stores/models/Canvas/canvas.types';
 const Canvas = () => {
   const context = useStore();
   const canvasRef: MutableRefObject<HTMLDivElement | null> = useRef(null);
+  const [isHoldMouseDown, setHoldMouseDown] = useState(false);
 
   const onMouseUp = (e: MouseEvent) => {
     if (
       e.currentTarget === canvasRef.current &&
-      context.canvas.selectedFigureId
+      context.canvas.selectedFigureId &&
+      isHoldMouseDown
     ) {
       context.canvas.selectFigure(null);
+    }
+    if (context.canvas.isResizing) {
+      context.canvas.stopResizing();
     }
   };
   const onMouseLeave = (e: MouseEvent) => {
@@ -30,6 +35,9 @@ const Canvas = () => {
     }
   };
   const onMouseMove = (e: MouseEvent) => {
+    if (isHoldMouseDown) {
+      setHoldMouseDown(false);
+    }
     if (context.canvas.isDragging) {
       context.canvas.moveDraggingFigure(e.movementX, e.movementY);
     }
@@ -42,6 +50,28 @@ const Canvas = () => {
       );
     }
   };
+  const onMouseDown = (e: MouseEvent) => {
+    if (e.currentTarget === canvasRef.current) {
+      setHoldMouseDown(true);
+    }
+  };
+
+  useEffect(() => {
+    const onKeyDown = (e: KeyboardEvent) => {
+      if (context.canvas.selectedFigureId) {
+        if (e.key === 'Delete') {
+          context.canvas.deleteSelectedFigure();
+        }
+        if (e.key === 'Escape') {
+          context.canvas.selectFigure(null);
+        }
+      }
+    };
+    window.document.addEventListener('keydown', onKeyDown);
+    return () => {
+      window.document.removeEventListener('keydown', onKeyDown);
+    };
+  }, [context.canvas]);
 
   return (
     <div
@@ -60,6 +90,7 @@ const Canvas = () => {
       onMouseMove={onMouseMove}
       onMouseLeave={onMouseLeave}
       onMouseUp={onMouseUp}
+      onMouseDown={onMouseDown}
       ref={canvasRef}
     >
       {context.canvas.figures.map(figure => (
