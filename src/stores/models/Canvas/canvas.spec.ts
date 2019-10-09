@@ -15,7 +15,7 @@ describe('Canvas model', () => {
       selectedFigureId: null,
       width: 800,
       height: 600,
-      isDragging: false,
+      draggingFigureId: null,
       resizingType: EResizeType.DISABLE,
       minFigureWidth: 100,
       minFigureHeight: 100,
@@ -58,7 +58,7 @@ describe('Canvas model', () => {
       });
     });
 
-    describe('moveSelectedFigure', () => {
+    describe('moveDraggingFigure', () => {
       it('should move success', () => {
         const startStore = {
           figures: [
@@ -71,10 +71,10 @@ describe('Canvas model', () => {
               top: 20,
             },
           ],
-          selectedFigureId: 'test',
+          draggingFigureId: 'test',
         };
         const store = getStore(startStore);
-        store.moveSelectedFigure(100, 200);
+        store.moveDraggingFigure(100, 200);
         const expectResult: ICanvasStore = {
           ...store,
           figures: [
@@ -100,10 +100,10 @@ describe('Canvas model', () => {
               top: 20,
             },
           ],
-          selectedFigureId: null,
+          draggingFigureId: null,
         };
         const store = getStore(startStore);
-        store.moveSelectedFigure(100, 200);
+        store.moveDraggingFigure(100, 200);
         const expectResult: ICanvasStore = {
           ...store,
           figures: [...startStore.figures],
@@ -123,10 +123,10 @@ describe('Canvas model', () => {
               top: 20,
             },
           ],
-          selectedFigureId: 'test',
+          draggingFigureId: 'test',
         };
         const store = getStore(startStore);
-        store.moveSelectedFigure(-100, -200);
+        store.moveDraggingFigure(-100, -200);
         const expectResult: ICanvasStore = {
           ...store,
           figures: [
@@ -154,10 +154,10 @@ describe('Canvas model', () => {
               top: 0,
             },
           ],
-          selectedFigureId: 'test',
+          draggingFigureId: 'test',
         };
         const store = getStore(startStore);
-        store.moveSelectedFigure(400, 400);
+        store.moveDraggingFigure(400, 400);
         const expectResult: ICanvasStore = {
           ...store,
           figures: [
@@ -235,13 +235,13 @@ describe('Canvas model', () => {
       it('should handle success', () => {
         const startStore = {
           figures: [],
-          isDragging: false,
+          draggingFigureId: null,
         };
         const store = getStore(startStore);
-        store.startDragging();
+        store.startDragging('test');
         const expectResult: ICanvasStore = {
           ...store,
-          isDragging: true,
+          draggingFigureId: 'test',
         };
         return expect(store).toEqual(expectResult);
       });
@@ -251,13 +251,13 @@ describe('Canvas model', () => {
       it('should handle success', () => {
         const startStore = {
           figures: [],
-          isDragging: true,
+          draggingFigureId: 'test',
         };
         const store = getStore(startStore);
         store.stopDragging();
         const expectResult: ICanvasStore = {
           ...store,
-          isDragging: false,
+          draggingFigureId: null,
         };
         return expect(store).toEqual(expectResult);
       });
